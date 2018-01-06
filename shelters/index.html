@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Shelter FeatureLayer</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.1.1/dist/esri-leaflet.js" integrity="sha512-ECQqaYZke9cSdqlFG08zSkudgrdF6I1d8ViSa7I3VIszJyVqw4ng1G8sehEXlumdMnFYfzY0tMgdQa4WCs9IUw==" crossorigin=""></script>
+    <script src="js/raphael.min.js"></script>
+    <script src="js/charts.min.js"></script>
+    <!-- load the latest release from the cdn automatically -->
+    <script src="https://unpkg.com/esri-leaflet-gp"></script>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+ #info-pane {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+.leaflet-popup-content {
+  width:240px;    
+  }
+
+/*.tab {
+    float:left;
+    display: none;
+}
+.tab:first-of-type {
+    display: inline-block;
+}
+.tabs-link {
+    position: relative;
+    top: -14px;
+    height: 20px;
+    left: -40px;
+}
+.tab-link {
+    background:#eee;
+    display: inline-block;
+    padding:10px;
+    border:1px solid #ccc;
+    margin-left:-1px;
+    position:relative;
+    list-style-type: none;
+    left:1px;
+    top:1px;
+    cursor:pointer;
+}
+.tab-link {
+    background:#f8f8f8;
+}
+.content {
+    background:white;
+    position:absolute;
+    top:28px;
+    left:0;
+    right:0;
+    bottom:0;
+    border:1px solid #ccc;
+}
+.tab:target {
+    display: block;
+}*/
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="info-pane" class="leaflet-bar">
+        <label>
+            Click shelter to see 
+            <br>occupancy and get
+            <br>3-5 minute drivetimes
+            
+        </label>
+    </div>
+    <script>
+    var map = L.map('map').setView([43.653, -79.383], 13);
+    var icon = L.icon({
+        iconUrl: 'img/shelter.svg',
+        iconRetinaUrl: 'img/shelter.svg',
+        iconSize: [20, 20],
+        iconAnchor: [13.5, 17.5],
+        popupAnchor: [0, -1],
+    });
+    L.esri.basemapLayer('Gray').addTo(map);
+    var fl = L.esri.featureLayer({
+        url: 'http://gis.toronto.ca/arcgis/rest/services/secondary/cot_geospatial_webm/MapServer/122/',
+        useCors: false,
+        pointToLayer: function(geojson, latlng) {
+            return L.marker(latlng, {
+                icon: icon
+            });
+        }
+    }).addTo(map);
+
+
+    fl.bindPopup(function(layer) {
+        return L.Util.template("<b>Name:</b> {NAME}<br>" +
+            "<b>ADDRESS:</b>  {ADDRESS_FULL}<br>" +
+            "<b>TYPE:</b>  {TYPE}<br> " +
+            "<b>TYPE2:</b>  {TYPE2}<br> " +
+            "<b>CAPACITY:</b>  {CAPACITY}<br>" +
+            "<br><i> If near CAPACITY please call shelter to confirm space. Data updated last: DATE" +
+            "<div id='chart1' style='width: 220px; height: 200px;'></div> <div id='chart2' style='width:  220px; height: 200px;'></div><div id='chart3' style='width:  220px; height: 200px;'></div>", layer.feature.properties);
+    }, { maxWidth: 325, minWidth: 325, minHeight: 250, maxHeight: 550, keepInView: true, autoPan: true, closeButton: true });
+
+    // fl.bindPopup(function(layer) {
+    //     return L.Util.template(
+    //         '<div class="tabs">' +
+    //         '<div class="tab" id="tab-1">' +
+    //         '<div class="content">' +
+    //         " <b>Name:</b> {NAME}<br>" +
+    //         "<b>ADDRESS:</b>  {ADDRESS_FULL}<br>" +
+    //         "<b>TYPE:</b>  {TYPE}<br> " +
+    //         "<b>TYPE2:</b>  {TYPE2}<br> " +
+    //         "<b>CAPACITY:</b>  {CAPACITY}<br>" +
+    //         "<br><i> If near CAPACITY please call shelter to confirm space. <br>Data updated last: DATE" +
+    //         '</div>' +
+    //         '</div>' +
+
+    //         '<div class="tab" id="tab-2">' +
+    //         '<div class="content">' +
+    //         "<div id='chart1' style='width: 220px; height: 200px;'></div> <div id='chart2' style='width:  220px; height: 200px;'></div><div id='chart3' style='width:  220px; height: 200px;'></div>" +
+    //         '</div>' +
+    //         '</div>' +
+
+    //         '<ul class="tabs-link">' +
+    //         '<li class="tab-link"> <a href="#tab-1"><span>Shalter Information</span></a></li>' +
+    //         '<li class="tab-link"> <a href="#tab-2"><span>Occupancy</span></a></li>' +
+    //         '</ul>' +
+    //         '</div>', layer.feature.properties);
+    // }, { maxWidth: 325, minWidth: 325, minHeight: 250, maxHeight: 550, keepInView: true, autoPan: true, closeButton: true });
+
+    var gpService = L.esri.GP.service({
+        url: "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Network/ESRI_DriveTime_US/GPServer/CreateDriveTimePolygons",
+        useCors: false
+    });
+
+    var gpTask = gpService.createTask();
+
+    gpTask.setParam("Drive_Times", "1 2");
+
+    var driveTimes = L.featureGroup();
+    map.addLayer(driveTimes);
+
+    fl.on('click', function(evt) {
+        // var chart = new Charts.LineChart('chart1');
+        // chart.add_line({
+        //    data: [[1, 828906, {tooltip: "my special point"}],[2, 566933],[3, 584150],[4,  
+        //             1072143],[5, 1622455],[6, 2466746],[7, 2427789]]
+        //    });
+        console.log(evt);
+        var capacity = evt.layer.feature.properties.CAPACITY;
+        var mens = (capacity * .96 / capacity) * 100;
+        var womens = (capacity * .9 / capacity) * 100;
+        var family = (capacity * .7 / capacity) * 100;
+
+        var purple = '#6a329e';
+        var blue = '#00a6dd';
+        var green = '#659e32';
+        var orange = '#b85d26';
+
+        var progress_opts = {
+            font_color: "#fff",
+            fill_color: "#222",
+            background_color: "#00aadd",
+            text_shadow: "rgba(0,0,0,.1)"
+        };
+
+
+
+        var progress1 = new Charts.CircleProgress('chart1', 'Men Occupancy', mens, {
+            radius: 45,
+            font_color: "#fff",
+            fill_color: "#222",
+            label_color: "#333",
+            text_shadow: "rgba(0,0,0,.1)",
+            stroke_color: blue
+        });
+
+        progress1.draw()
+
+        var progress2 = new Charts.CircleProgress('chart2', 'Women Occupancy', womens, {
+            font_color: "#fff",
+            radius: 45,
+            fill_color: "#222",
+            label_color: "#333",
+            text_shadow: "rgba(0,0,0,.1)",
+            stroke_color: orange
+        });
+        progress2.draw()
+
+        var progress3 = new Charts.CircleProgress('chart3', 'Family Occupancy', family, {
+            radius: 45,
+            font_color: "#fff",
+            fill_color: "#222",
+            label_color: "#333",
+            text_shadow: "rgba(0,0,0,.1)",
+            stroke_color: green
+        });
+        progress3.draw()
+
+        driveTimes.clearLayers();
+        gpTask.setParam("Input_Location", evt.latlng)
+        gpTask.run(driveTimeCallback);
+    });
+
+
+
+    function driveTimeCallback(error, response, raw) {
+        // document.getElementById('info-pane').innerHTML = 'Click shelter to see 3 and 5 minute drivetimes';
+        driveTimes.clearLayers();
+        driveTimes.addLayer(L.geoJSON(response.Output_Drive_Time_Polygons));
+    }
+    </script>
+</body>
+
+</html>
