@@ -12,7 +12,7 @@ This is a **citizen-led** project.
 * [**GitHub Pages.**][gh-pages] A Jekyll website-hosting service provided by GitHub.
 * [**Leaflet.**][leaflet] A JavaScript library for mobile-friendly interactive maps.
 
-## Local Development
+## :computer: Local Development
 
 ### Requirements
 
