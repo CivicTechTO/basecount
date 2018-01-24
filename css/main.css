@@ -1,0 +1,261 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+
+html,
+body,
+#map {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.legend {
+  text-align: left;
+  line-height: 18px;
+  color: #555;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+
+
+.overlay-wrapper {
+  max-width: 26.25em;
+  position: fixed;
+  top: 0.625em;
+  right: 0.625em;
+  width: 40%;
+  z-index: 1000;
+}
+
+.overlay {
+  font-family: BlinkMacSystemFont;
+  display: none;
+}
+
+.tab-wrapper .tab-bar {
+  display: flex;
+  position: relative;
+  top: 1px;
+}
+
+.tab-wrapper .tab-bar li {
+  background: lightGray;
+  border: 1px solid lightGray;
+  color: gray;
+  cursor: pointer;
+  padding: 0.5em 0.75em;
+}
+
+.tab-wrapper .tab-bar li + li {
+  border-left: 0;
+}
+
+.tab-wrapper .tab-bar [data-active] {
+  background: white;
+  border-top-color: lightGray;
+  border-right-color: lightGray;
+  border-bottom-color: white;
+  border-left-color: lightGray;
+  color: black;
+}
+
+.tab-wrapper .tabs {
+  background: white;
+  border: 1px solid lightGray;
+  padding: 0.75em;
+}
+
+.tab-wrapper .tabs [data-tab] {
+  display: none;
+}
+
+.tab-wrapper .tabs [data-active] {
+  display: block;
+}
+
+.tab-wrapper form {
+  text-align: center;
+}
+
+.tab-wrapper .tabs fieldset {
+  border: 1px solid lightGray;
+  margin-top: 0.75em;
+  padding: 1.25em 0.75em 0;
+  position: relative;
+  text-align: left;
+}
+
+.tab-wrapper .tabs fieldset + fieldset {
+  margin-top: 1.5em;
+}
+
+.tab-wrapper label {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5em;
+  position: absolute;
+  top: -0.5em;
+}
+
+.tab-wrapper input[type="checkbox"] {
+  margin: 0 0.5em 0 0;
+}
+
+.tab-wrapper input[type="range"] {
+  margin: 0 1em 0 0;
+}
+
+.tab-wrapper input[type="submit"] {
+  margin: 1em 0 0;
+}
+
+.tab-wrapper .options {
+  column-count: 3;
+}
+
+.income .options {
+  column-count: 2;
+}
+
+.overlay .close, button.open {
+  background: white;
+  border: 1px solid darkgray;
+  border-radius: 100%;
+  color: darkGray;
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1;
+  padding: 0 0 0.125em;
+  position: absolute;
+  right: 0em;
+  text-align: center;
+  top: 0em;
+  width: 1.25em;
+  z-index: 1;
+}
+
+.overlay-wrapper button:active,
+.overlay-wrapper button:focus {
+  outline: 0;
+}
+
+.slider .min, .slider .max {
+  flex-grow: 0;
+  font-feature-settings: "tnum";
+}
+
+.slider .labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.slider .range {
+  margin: 0 0 0.5em;
+}
+
+.tooltip {
+  background: gray;
+  border-radius: 100%;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  margin-left: 4px;
+  position: relative;
+  text-align: center;
+  width: 16px;
+}
+
+.tooltip-text {
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 4px;
+  bottom: 20px;
+  color: white;
+  display: none;
+  font-size: 16px;
+  padding: 0.5em;
+  position: absolute;
+  text-align: left;
+  transform: translate3d(-50%, 0, 0);
+  width: 300px;
+  z-index: 1001;
+}
+
+.tooltip:hover .tooltip-text {
+  display: block;
+}
