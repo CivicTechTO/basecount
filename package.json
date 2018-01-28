@@ -1,0 +1,25 @@
+{
+  "name": "toronto-shelter-map",
+  "version": "1.0.0",
+  "description": "Mapping the capacity and current occupancy of City of Toronto emergency shelters.",
+  "main": "index.js",
+  "dependencies": {
+    "fuzzysearch-js": "^0.2.0",
+    "levenshtein": "^1.0.5",
+    "prime": "^0.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CivicTechTO/toronto-shelter-map.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CivicTechTO/toronto-shelter-map/issues"
+  },
+  "homepage": "https://github.com/CivicTechTO/toronto-shelter-map#readme"
+}
