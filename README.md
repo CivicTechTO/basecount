@@ -1,24 +1,15 @@
-# README
+# Basecount
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Starting the app
 
-Things you may want to cover:
+### Requirements
+- ruby 2+
+- node JS
 
-* Ruby version
+### Starting
+```
+  bundle install;
+  npm install;
+  rails s;
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
