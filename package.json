@@ -1,28 +1,36 @@
 {
-  "name": "toronto-shelter-map",
+  "name": "basecount",
   "version": "1.0.0",
-  "description": "Mapping the capacity and current occupancy of City of Toronto emergency shelters.",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "index.js",
-  "dependencies": {
-    "fuzzysearch-js": "^0.2.0",
-    "levenshtein": "^1.0.5",
-    "prime": "^0.5.0"
-  },
-  "devDependencies": {
-    "http-server": "^0.11.1"
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   },
   "scripts": {
-    "start": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/CivicTechTO/toronto-shelter-map.git"
-  },
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CivicTechTO/toronto-shelter-map/issues"
+  "license": "ISC",
+  "dependencies": {
+    "@rails/webpacker": "3.5.3",
+    "axios": "^0.18.0",
+    "babel-preset-react": "^6.24.1",
+    "chart.js": "^2.7.2",
+    "firebase": "^5.0.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.2",
+    "react-dom": "^16.4.1",
+    "react-google-maps": "^9.4.5",
+    "react-icons": "^2.2.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.2.6",
+    "webpack": "3.12.0"
   },
-  "homepage": "https://github.com/CivicTechTO/toronto-shelter-map#readme"
+  "devDependencies": {
+    "webpack-cli": "^1.5.3",
+    "webpack-dev-server": "2.11.2"
+  }
 }

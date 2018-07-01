@@ -1,0 +1,742 @@
+{
+    "data": [
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Birkdale Residence",
+            "phone": "416-392-5650",
+            "address": "1229 Ellesmere Rd Toronto ON M1P 4V8",
+            "web": "",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family"
+            ],
+            "eligibilityNotes": "Women 16+ with children, pregnant women in last trimester, refugee claimant families",
+            "services": "",
+            "latitude": 43.768292,
+            "longitude": -79.267412,
+            "fid": "MET0402"
+        },
+        {
+            "orgName": "Good Shepherd Ministries",
+            "programName": "Good Shepherd Centre",
+            "phone": "416-869-3619",
+            "address": "412 Queen St E Toronto ON M5A 1T3",
+            "web": "www.goodshepherd.ca",
+            "email": "",
+            "hours": "Mon-Sun 5:30 pm-8 am",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.656151,
+            "longitude": -79.362522,
+            "fid": "MET0465"
+        },
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Family Residence",
+            "phone": "416-397-1318",
+            "address": "4222 Kingston Rd Toronto ON M1E 2M6",
+            "web": "",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family"
+            ],
+            "eligibilityNotes": "Also pregnant women with partners",
+            "services": "",
+            "latitude": 43.76065,
+            "longitude": -79.196334,
+            "fid": "MET0669"
+        },
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Robertson House",
+            "phone": "416-392-5662",
+            "address": "291 Sherbourne St Toronto ON M5A 2R9",
+            "web": "",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family"
+            ],
+            "eligibilityNotes": "Women with children, high risk pregnant women",
+            "services": "",
+            "latitude": 43.66068,
+            "longitude": -79.371457,
+            "fid": "MET0676"
+        },
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Seaton House",
+            "phone": "416-392-5527; 416-392-5522",
+            "address": "339 George St Toronto ON M5A 2N2",
+            "web": "",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "!8+",
+            "services": "",
+            "latitude": 43.659956,
+            "longitude": -79.374265,
+            "fid": "MET0677"
+        },
+        {
+            "orgName": "NA-ME-RES (Native Men's Residence)",
+            "programName": "NA-ME-RES Men's Shelter",
+            "phone": "416-652-0334",
+            "address": "14 Vaughan Rd Toronto ON M6G 2N1",
+            "web": "www.nameres.org",
+            "email": "general@nameres.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "Abstinence-based, Emphasis on Aboriginal culture",
+            "services": "",
+            "latitude": 43.681432,
+            "longitude": -79.418366,
+            "fid": "MET0704"
+        },
+        {
+            "orgName": "Fred Victor",
+            "programName": "Bethlehem United Shelter",
+            "phone": "416-644-1734",
+            "address": "1161 Caledonia Rd Toronto ON M6A 2W9",
+            "web": "www.fredvictor.org",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "mixed adult"
+            ],
+            "eligibilityNotes": "Pets allowed",
+            "services": "",
+            "latitude": 43.715432,
+            "longitude": -79.467129,
+            "fid": "MET0821"
+        },
+        {
+            "orgName": "Homes First Society",
+            "programName": "Homes First Society Women's Interim Program",
+            "phone": "416-395-0928",
+            "address": "702 Kennedy Rd Toronto ON M1K 2B5",
+            "web": "www.homesfirst.on.ca",
+            "email": "admin@homesfirst.on.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.728402,
+            "longitude": -79.266359,
+            "fid": "MET0947"
+        },
+        {
+            "orgName": "Salvation Army",
+            "programName": "Evangeline Residence",
+            "phone": "416-762-9636",
+            "address": "2808 Dundas St W Toronto ON M6P 1Y5",
+            "web": "www.torontohhs.org/shelters/evangeline-residence",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.665519,
+            "longitude": -79.463138,
+            "fid": "MET0992"
+        },
+        {
+            "orgName": "Salvation Army",
+            "programName": "Maxwell Meighen Centre",
+            "phone": "416-366-2733",
+            "address": "135 Sherbourne St Toronto ON M5A 2R5",
+            "web": "www.maxwellmeighen.ca",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "18+",
+            "services": "",
+            "latitude": 43.655028,
+            "longitude": -79.369215,
+            "fid": "MET1000"
+        },
+        {
+            "orgName": "Scott Mission",
+            "programName": "Scott Mission",
+            "phone": "416-923-8872",
+            "address": "502 Spadina Ave Toronto ON M5S 2H1",
+            "web": "www.scottmission.com",
+            "email": "info@scottmission.com",
+            "hours": "Mon-Sun 7 pm-7 am",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.65863,
+            "longitude": -79.40074,
+            "fid": "MET1022"
+        },
+        {
+            "orgName": "YWCA Toronto",
+            "programName": "First Stop Woodlawn",
+            "phone": "416-922-3271",
+            "address": "80 Woodlawn Ave E Toronto ON M4T 1B9",
+            "web": "www.ywcatoronto.org",
+            "email": "1intake@ywcatoronto.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "16+",
+            "services": "",
+            "latitude": 43.684547,
+            "longitude": -79.389984,
+            "fid": "MET1093"
+        },
+        {
+            "orgName": "Street Haven at the Crossroads",
+            "programName": "Street Haven at the Crossroads",
+            "phone": "416-967-6060",
+            "address": "87 Pembroke St Toronto ON M5A 2N9",
+            "web": "www.streethaven.com",
+            "email": "info@streethaven.com",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "16+",
+            "services": "",
+            "latitude": 43.659243,
+            "longitude": -79.37243,
+            "fid": "MET1096"
+        },
+        {
+            "orgName": "Dixon Hall Neighbourhood Services",
+            "programName": "The Schoolhouse",
+            "phone": "416-960-9240",
+            "address": "349 George St Toronto ON M5A 2N2",
+            "web": "www.dixonhall.org",
+            "email": "Harvey.stein@dixonhall.org",
+            "hours": "Mon-Sun 4 pm-8 am, Sat-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.660144,
+            "longitude": -79.374306,
+            "fid": "MET1171"
+        },
+        {
+            "orgName": "Red Door Family Shelter",
+            "programName": "Red Door Family Shelter",
+            "phone": "416-469-3457 ext 246",
+            "address": "1430 Gerrard St E Toronto ON M4M 1J2",
+            "web": "www.reddoorshelter.ca",
+            "email": "reception@reddoorshelter.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.672337,
+            "longitude": -79.322282,
+            "fid": "MET1254"
+        },
+        {
+            "orgName": "St Simon's Shelter",
+            "programName": "St Simon's Shelter",
+            "phone": "416-925-7475",
+            "address": "St Simon the Apostle Anglican Church, 525 Bloor St E Toronto ON M4W 1J1",
+            "web": "www.stsimonsshelter.ca",
+            "email": "stsimonsshelter@bellnet.ca",
+            "hours": "Mon-Sun 4:30 pm-8:30 am",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "18+",
+            "services": "",
+            "latitude": 43.671941,
+            "longitude": -79.373916,
+            "fid": "MET3055"
+        },
+        {
+            "orgName": "Salvation Army",
+            "programName": "Gateway",
+            "phone": "416-368-0324",
+            "address": "107 Jarvis St Toronto ON M5C 2H4",
+            "web": "www.thegateway.ca",
+            "email": "frontline@thegateway.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "21+",
+            "services": "",
+            "latitude": 43.652367,
+            "longitude": -79.372273,
+            "fid": "MET3234"
+        },
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Women's Residence",
+            "phone": "416-392-5500",
+            "address": "674 Dundas St W Toronto ON M5T 1H9",
+            "web": "",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "16+",
+            "services": "",
+            "latitude": 43.651882,
+            "longitude": -79.403695,
+            "fid": "MET3365"
+        },
+        {
+            "orgName": "Society of St Vincent de Paul",
+            "programName": "Mary's Home",
+            "phone": "416-595-1578",
+            "address": "70 Gerrard St E Toronto ON M5B 1G6",
+            "web": "www.svdptoronto.com",
+            "email": "boluwolerotimi.maryshome@rogers.com",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "16+",
+            "services": "",
+            "latitude": 43.660051,
+            "longitude": -79.378312,
+            "fid": "MET3693"
+        },
+        {
+            "orgName": "Fred Victor",
+            "programName": "Fred Victor Women's Hostel",
+            "phone": "416-368-2642",
+            "address": "86 Lombard St Toronto ON M5C 1M3",
+            "web": "www.fredvictor.org",
+            "email": "",
+            "hours": "Mon-Fri 3 pm-9:30 am, Sat-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "18+",
+            "services": "",
+            "latitude": 43.652307,
+            "longitude": -79.373961,
+            "fid": "MET3715"
+        },
+        {
+            "orgName": "Homes First Society",
+            "programName": "Homes First Society Scarborough Shelter",
+            "phone": "416-395-0993; 416-395-0995",
+            "address": "3576 St Clair Ave E Toronto ON M1K 1M2",
+            "web": "www.homesfirst.on.ca",
+            "email": "admin@homesfirst.on.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "mixed adult"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.717528,
+            "longitude": -79.258109,
+            "fid": "MET4155"
+        },
+        {
+            "orgName": "Cornerstone Place",
+            "programName": "Cornerstone Place",
+            "phone": "647-346-0616",
+            "address": "616 Vaughan Rd Toronto ON M6C 2R5",
+            "web": "",
+            "email": "frontdesk@thecornerstone.ca",
+            "hours": "Mon-Sun 4 pm-8 am",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "25+",
+            "services": "",
+            "latitude": 43.691962,
+            "longitude": -79.439859,
+            "fid": "MET4398"
+        },
+        {
+            "orgName": "Salvation Army",
+            "programName": "Florence Booth House",
+            "phone": "416-603-9800",
+            "address": "723 Queen St W Toronto ON M6J 1E6",
+            "web": "florenceboothhouse.com",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "16+",
+            "services": "",
+            "latitude": 43.646489,
+            "longitude": -79.406338,
+            "fid": "MET4612"
+        },
+        {
+            "orgName": "Christie Ossington Neighbourhood Centre",
+            "programName": "Christie Ossington Men's Shelter",
+            "phone": "416-516-8642",
+            "address": "973 Lansdowne Ave Toronto ON  M6H 3Z5",
+            "web": "www.conccommunity.org",
+            "email": "conc@conc.ca",
+            "hours": "Mon-Sun 4:30 pm-8 am, Sat-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "18+",
+            "services": "",
+            "latitude": 43.666118,
+            "longitude": -79.446101,
+            "fid": "MET4669"
+        },
+        {
+            "orgName": "Society of St Vincent de Paul",
+            "programName": "Elisa House",
+            "phone": "416-259-2528",
+            "address": "60 Newcastle St Toronto ON M8Y 1A3",
+            "web": "www.svdptoronto.org",
+            "email": "elisahouse.svdptoronto@rogers.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women"
+            ],
+            "eligibilityNotes": "18+",
+            "services": "",
+            "latitude": 43.61803,
+            "longitude": -79.497321,
+            "fid": "MET5087"
+        },
+        {
+            "orgName": "Dixon Hall Neighbourhood Services",
+            "programName": "Heyworth House",
+            "phone": "416-691-0012",
+            "address": "2714 Danforth Ave Toronto ON M4C 1L7",
+            "web": "www.dixonhall.org",
+            "email": "haydar.shouly@dixonhall.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "mixed adult"
+            ],
+            "eligibilityNotes": "24+",
+            "services": "",
+            "latitude": 43.689116,
+            "longitude": -79.298255,
+            "fid": "MET5172"
+        },
+        {
+            "orgName": "Christie Ossington Neighbourhood Centre",
+            "programName": "Christie Ossington South-Men's Shelter",
+            "phone": "416-792-8941",
+            "address": "850 Bloor St W Toronto ON M6G 1M2",
+            "web": "www.conccommunity.org",
+            "email": "alia@conc.ca",
+            "hours": "Mon-Fri 4:30 pm-8 am; Sat-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.662421,
+            "longitude": -79.424201,
+            "fid": "MET6100"
+        },
+        {
+            "orgName": "Shelter, Support and Housing Administration",
+            "programName": "Streets to Homes Assessment and Referral Centre",
+            "phone": "Administration 416-392-0090",
+            "address": "129 Peter St Toronto ON M5V 2H3",
+            "web": "",
+            "email": "sharc@toronto.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "mixed adult"
+            ],
+            "eligibilityNotes": "16+, living on the street or street involved",
+            "services": "Walk in shelter referral. Street Respite: 24 hour drop-in with access to showers and snacks",
+            "latitude": 43.648697,
+            "longitude": -79.393274,
+            "fid": "MET0120"
+        },
+        {
+            "orgName": "Matthew House Refugee Reception Services",
+            "programName": "Matthew House Refugee Reception Services",
+            "phone": "416-203-7848",
+            "address": "981 Dundas St W Toronto ON M6J 1W4",
+            "web": "www.matthewhouse.ca",
+            "email": "admin@matthewhouse.ca",
+            "hours": "",
+            "eligibility": [
+                "mixed adult",
+                "youth"
+            ],
+            "eligibilityNotes": "Refugee claimants in Canada less than 28 days",
+            "services": "",
+            "latitude": 43.650226,
+            "longitude": -79.415264,
+            "fid": "MET0274"
+        },
+        {
+            "orgName": "Turning Point Youth Services",
+            "programName": "Turning Point Emergency Shelter",
+            "phone": "416-925-9250",
+            "address": "95 Wellesley St E Toronto ON M4Y 2X9",
+            "web": "www.turningpoint.ca",
+            "email": "info@turningpoint.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.665864,
+            "longitude": -79.379215,
+            "fid": "MET0641"
+        },
+        {
+            "orgName": "Sojourn House",
+            "programName": "Sojourn House",
+            "phone": "416-864-0515",
+            "address": "101 Ontario St Toronto ON M5A 2V2",
+            "web": "www.sojournhouse.org",
+            "email": "info@sojournhouse.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family",
+                "mixed adult",
+                "youth"
+            ],
+            "eligibilityNotes": "Refugees",
+            "services": "",
+            "latitude": 43.654499,
+            "longitude": -79.366777,
+            "fid": "MET1054"
+        },
+        {
+            "orgName": "Toronto Community Hostel",
+            "programName": "Toronto Community Hostel",
+            "phone": "416-925-4431",
+            "address": "191 Spadina Rd Toronto ON M5R 2T9",
+            "web": "www.tchostel.org",
+            "email": "info@tchostel.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "mixed adult",
+                "family"
+            ],
+            "eligibilityNotes": "Refugees",
+            "services": "",
+            "latitude": 43.673617,
+            "longitude": -79.406284,
+            "fid": "MET1137"
+        },
+        {
+            "orgName": "YMCA of Greater Toronto",
+            "programName": "YMCA House",
+            "phone": "416-504-9700",
+            "address": "Vanauley Street YMCA, 7 Vanauley St Toronto ON M5T 2A9",
+            "web": "www.ymcagta.org",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.648869,
+            "longitude": -79.398283,
+            "fid": "MET1264"
+        },
+        {
+            "orgName": "Youth Without Shelter",
+            "programName": "Youth Without Shelter",
+            "phone": "416-748-0110",
+            "address": "6 Warrendale Crt Toronto ON M9V 1P9",
+            "web": "www.yws.on.ca",
+            "email": "communications@yws.on.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.736303,
+            "longitude": -79.580432,
+            "fid": "MET1286"
+        },
+        {
+            "orgName": "COSTI Immigrant Services",
+            "programName": "Ralph Chiodo Family Immigrant Reception Centre",
+            "phone": "416-922-6688",
+            "address": "100 Lippincott St Toronto ON M5S 2P1",
+            "web": "www.costi.org/programs/settlement.php",
+            "email": "reception@costi.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "family",
+                "mixed adult"
+            ],
+            "eligibilityNotes": "Refugees",
+            "services": "",
+            "latitude": 43.657678,
+            "longitude": -79.407047,
+            "fid": "MET1491"
+        },
+        {
+            "orgName": "Kennedy House Youth Services",
+            "programName": "Kennedy House Youth Shelter",
+            "phone": "416-421-7776",
+            "address": "1076 Pape Ave Toronto ON M4K 3W5",
+            "web": "www.kennedyhouseyouthshelter.com",
+            "email": "papereception@kennedyhouse.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.690915,
+            "longitude": -79.349675,
+            "fid": "MET2568"
+        },
+        {
+            "orgName": "Eva's Initiatives",
+            "programName": "Eva's Place",
+            "phone": "416-441-1414",
+            "address": "360 Lesmill Rd Toronto ON M3B 2T5",
+            "web": "www.evas.ca",
+            "email": "info@evas.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-21",
+            "services": "",
+            "latitude": 43.763354,
+            "longitude": -79.360864,
+            "fid": "MET2787"
+        },
+        {
+            "orgName": "Horizons for Youth",
+            "programName": "Horizons for Youth",
+            "phone": "416-781-9898",
+            "address": "422 Gilbert Ave Toronto ON M6E 4X3",
+            "web": "www.horizons4youth.org",
+            "email": "info@horizonsforyouth.org",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.68938,
+            "longitude": -79.462339,
+            "fid": "MET3045"
+        },
+        {
+            "orgName": "Christie Refugee Welcome Centre",
+            "programName": "Christie Refugee Welcome Centre",
+            "phone": "416-588-9277",
+            "address": "43 Christie St Toronto ON M6G 3B1",
+            "web": "www.christiestreetrc.com",
+            "email": "general@christiestreetrc.com",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "women",
+                "family"
+            ],
+            "eligibilityNotes": "Refugee claimant families and single women",
+            "services": "",
+            "latitude": 43.66512,
+            "longitude": -79.419029,
+            "fid": "MET3422"
+        },
+        {
+            "orgName": "Eva's Initiatives",
+            "programName": "Eva's Satellite",
+            "phone": "416-642-2581",
+            "address": "25 Canterbury Pl Toronto ON M2N 0E3",
+            "web": "www.evas.ca",
+            "email": "info@evas.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "",
+            "latitude": 43.772797,
+            "longitude": -79.414745,
+            "fid": "MET4118"
+        },
+        {
+            "orgName": "Covenant House Toronto",
+            "programName": "Covenant House",
+            "phone": "416-593-4849",
+            "address": "20 Gerrard St E Toronto ON M5B 2P3",
+            "web": "www.covenanthousetoronto.ca",
+            "email": "general@covenanthouse.ca",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "youth"
+            ],
+            "eligibilityNotes": "16-24",
+            "services": "Additional two emergency crisis beds for survivors of human trafficking and sexual exploitation",
+            "latitude": 43.659402,
+            "longitude": -79.381469,
+            "fid": "MET4952"
+        },
+        {
+            "orgName": "Adam House",
+            "programName": "Adam House",
+            "phone": "416-538-2836",
+            "address": "430 Gladstone Ave Toronto ON M6H 3H9",
+            "web": "www.adamhouse.org",
+            "email": "info@adamhouse.org",
+            "hours": "Shelter intake Mon-Fri 9 am-5 pm",
+            "eligibility": [
+                "mixed adult",
+                "family"
+            ],
+            "eligibilityNotes": "Refugee claimants in Canada less than two weeks",
+            "services": "",
+            "latitude": 43.657755,
+            "longitude": -79.433036,
+            "fid": "MET7782"
+        },
+        {
+            "orgName": "Salvation Army",
+            "programName": "New Hope Leslieville",
+            "phone": "647-362-3062",
+            "address": "29 Leslie St Toronto ON M4M 3C3",
+            "web": "www.torontohhs.org/shelters/hope-shelter/",
+            "email": "",
+            "hours": "Mon-Sun 24 hours",
+            "eligibility": [
+                "men"
+            ],
+            "eligibilityNotes": "",
+            "services": "",
+            "latitude": 43.6620418486,
+            "longitude": -79.3294335674,
+            "fid": "ESH01"
+        }
+    ]
+}
