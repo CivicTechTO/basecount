@@ -38,76 +38,54 @@ ActiveRecord::Schema.define(version: 2018_07_08_164945) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "permissions", force: :cascade do |t|
-    t.string "code"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "permissions_roles", force: :cascade do |t|
-    t.integer "permission_id"
-    t.integer "role_id"
-    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
-    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
-  end
-
   create_table "population_whitelists", force: :cascade do |t|
     t.integer "code"
-    t.integer "shelter_id"
+    t.integer "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shelter_id"], name: "index_population_whitelists_on_shelter_id"
-  end
-
-  create_table "role_scopes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "shelter_id"
-    t.integer "role_id"
-    t.integer "org_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["org_id"], name: "index_role_scopes_on_org_id"
-    t.index ["role_id"], name: "index_role_scopes_on_role_id"
-    t.index ["shelter_id"], name: "index_role_scopes_on_shelter_id"
-    t.index ["user_id"], name: "index_role_scopes_on_user_id"
+    t.index ["site_id"], name: "index_population_whitelists_on_site_id"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
+    t.integer "user_id"
+    t.integer "site_id"
+    t.integer "org_id"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["org_id"], name: "index_roles_on_org_id"
+    t.index ["site_id"], name: "index_roles_on_site_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "shelter_id"
+    t.integer "site_id"
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shelter_id"], name: "index_rooms_on_shelter_id"
+    t.index ["site_id"], name: "index_rooms_on_site_id"
   end
 
   create_table "schedule_templates", force: :cascade do |t|
-    t.integer "shelter_id"
+    t.integer "site_id"
     t.integer "day_of_week"
     t.integer "open"
     t.integer "close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shelter_id"], name: "index_schedule_templates_on_shelter_id"
+    t.index ["site_id"], name: "index_schedule_templates_on_site_id"
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.integer "shelter_id"
+    t.integer "site_id"
     t.datetime "open"
     t.datetime "close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shelter_id"], name: "index_schedules_on_shelter_id"
+    t.index ["site_id"], name: "index_schedules_on_site_id"
   end
 
-  create_table "shelters", force: :cascade do |t|
+  create_table "sites", force: :cascade do |t|
     t.string "name"
     t.string "address1"
     t.string "address2"
@@ -119,14 +97,14 @@ ActiveRecord::Schema.define(version: 2018_07_08_164945) do
     t.integer "org_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["org_id"], name: "index_shelters_on_org_id"
+    t.index ["org_id"], name: "index_sites_on_org_id"
   end
 
-  create_table "shelters_aspects", force: :cascade do |t|
-    t.integer "shelter_id"
+  create_table "sites_aspects", force: :cascade do |t|
+    t.integer "site_id"
     t.integer "aspect_id"
-    t.index ["aspect_id"], name: "index_shelters_aspects_on_aspect_id"
-    t.index ["shelter_id"], name: "index_shelters_aspects_on_shelter_id"
+    t.index ["aspect_id"], name: "index_sites_aspects_on_aspect_id"
+    t.index ["site_id"], name: "index_sites_aspects_on_site_id"
   end
 
   create_table "users", force: :cascade do |t|

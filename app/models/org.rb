@@ -1,3 +1,3 @@
 class Org < ApplicationRecord
-  has_many :shelters
+  has_many :sites
 end

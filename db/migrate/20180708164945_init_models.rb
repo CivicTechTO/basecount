@@ -1,43 +1,25 @@
 class InitModels < ActiveRecord::Migration[5.2]
   def change
-    create_table :permissions do |t|
-      t.string :code
-      t.string :description
-
-      t.timestamps
-    end
 
     create_table :roles do |t|
-      t.string :name
-      t.string :code
-
-      t.timestamps
-    end
-
-    create_table :permissions_roles do |t|
-      t.belongs_to :permission, index: true
-      t.belongs_to :role, index: true
-    end
-
-    create_table :role_scopes do |t|
       # todo
       t.belongs_to :user, index: true
-      t.belongs_to :shelter, index: true
-      t.belongs_to :role, index: true
+      t.belongs_to :site, index: true
       t.belongs_to :org, index: true
+      t.integer :role
 
       t.timestamps
     end
 
-    create_table :shelters do |t|
+    create_table :sites do |t|
       t.string :name
       t.string :address1
       t.string :address2
       t.string :city
       t.string :postal_code
       t.string :description
-      t.decimal :lat, {:precision=>10, :scale=>6}
-      t.decimal :lng, {:precision=>10, :scale=>6}
+      t.decimal :lat, precision: 10, scale: 6
+      t.decimal :lng, precision: 10, scale: 6
 
       t.belongs_to :org, index: true
 
@@ -54,7 +36,7 @@ class InitModels < ActiveRecord::Migration[5.2]
 
     create_table :population_whitelists do |t|
       t.integer :code
-      t.belongs_to :shelter, index: true
+      t.belongs_to :site, index: true
 
       t.timestamps
     end
@@ -65,14 +47,14 @@ class InitModels < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :shelters_aspects do |t|
-      t.belongs_to :shelter, index: true
+    create_table :sites_aspects do |t|
+      t.belongs_to :site, index: true
       t.belongs_to :aspect, index: true
     end
 
 
     create_table :schedules do |t|
-      t.belongs_to :shelter, index: true
+      t.belongs_to :site, index: true
       t.datetime :open
       t.datetime :close
 
@@ -81,7 +63,7 @@ class InitModels < ActiveRecord::Migration[5.2]
 
 
     create_table :schedule_templates do |t|
-      t.belongs_to :shelter, index: true
+      t.belongs_to :site, index: true
       t.integer :day_of_week
       t.integer :open
       t.integer :close
@@ -90,7 +72,7 @@ class InitModels < ActiveRecord::Migration[5.2]
     end
 
     create_table :rooms do |t|
-      t.belongs_to :shelter, index: true
+      t.belongs_to :site, index: true
       t.integer :capacity
 
       t.timestamps

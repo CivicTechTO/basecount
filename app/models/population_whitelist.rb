@@ -1,5 +1,5 @@
 class PopulationWhitelist < ApplicationRecord
-  belongs_to :shelter
+  belongs_to :site
   enum code: [
     :women,
     :men,

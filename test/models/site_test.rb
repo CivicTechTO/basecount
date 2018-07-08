@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShelterTest < ActiveSupport::TestCase
+class SiteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
