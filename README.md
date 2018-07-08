@@ -19,10 +19,15 @@ Helping respite centres communicate their population counts. This is a **citizen
   rails s;
 ```
 
+### Testing
+```
+  rails test;
+```
+
 ### Diagrams
 Diagrams are edited using [Draw.io](https://www.draw.io/)
 
-- [Database Diagram](https://raw.githubusercontent.com/CivicTechTO/basecount/master/app/diagrams/backend.png)
+- [Database Diagram](https://github.com/CivicTechTO/basecount/blob/master/diagrams/backend.png)
 
 ## :muscle: Contributing
 

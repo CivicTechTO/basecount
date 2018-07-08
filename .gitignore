@@ -33,3 +33,6 @@ yarn-debug.log*
 
 # dang osx
 .DS_Store
+
+# local development
+.rbenv-gemsets

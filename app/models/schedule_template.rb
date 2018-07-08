@@ -1,0 +1,2 @@
+class ScheduleTemplate < ApplicationRecord
+end
