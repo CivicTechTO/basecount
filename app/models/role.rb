@@ -55,24 +55,39 @@ class Role < ApplicationRecord
     user
   end
 
+  def self.revoke_user_role ( user, role, site_or_org = nil )
+    self.validate_user_role_scope( user, role, site_or_org )
+    return false if user.roles.empty?
+    return false unless self.user_has_role?(user, role, site_or_org)
+
+    roles_to_remove = filter_roles_on_org(user.roles, role, site_or_org)
+    user.roles = user.roles - roles_to_remove
+
+    user.save!
+
+    user
+  end
+
   def self.user_has_role? ( user, role, site_or_org = nil )
     self.validate_user_role_scope( user, role, site_or_org )
-    role_string = role.to_s
-
     return false if user.roles.empty?
 
-    applicable_roles = user.roles.select do |s|
+    applicable_roles = filter_roles_on_org(user.roles, role, site_or_org)
+    applicable_roles.length > 0
+  end
+
+  def self.filter_roles_on_org( user_roles, role, site_or_org )
+    role_string = role.to_s
+
+    user_roles.select do |user_role|
       if GLOBAL_ROLES.include? role
-        s.role == role_string
+        user_role.role == role_string
       elsif ORG_ROLES.include? role
-        s.role == role_string and s.org == site_or_org
+        user_role.role == role_string and user_role.org == site_or_org
       elsif SITE_ROLES.include? role
-        s.role == role_string and s.site == site_or_org
+        user_role.role == role_string and user_role.site == site_or_org
       end
     end
-
-
-    applicable_roles.length > 0
   end
 
   def self.validate_user_role_scope( user, role, site_or_org )

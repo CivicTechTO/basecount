@@ -3,7 +3,7 @@ require 'user_seeds_test_helper'
 require 'site_org_seeds_test_helper'
 require 'global_err'
 
-class RoleTest < ActiveSupport::TestCase
+class GrantRoleTest < ActiveSupport::TestCase
   setup do
     UserSeedsTestHelper.clean
     SiteOrgSeedsTestHelper.clean
