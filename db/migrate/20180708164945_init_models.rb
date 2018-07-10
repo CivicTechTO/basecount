@@ -2,7 +2,6 @@ class InitModels < ActiveRecord::Migration[5.2]
   def change
 
     create_table :roles do |t|
-      # todo
       t.belongs_to :user, index: true
       t.belongs_to :site, index: true
       t.belongs_to :org, index: true

@@ -15,8 +15,7 @@ class SiteOrgSeedsTestHelper
   def self.seed_org
     Org.create!(generate_random_org_params)
   end
-  
-  # TODO: faker
+
   def self.generate_random_org_params
     {
       name: "Dixon Hall #{rand(10000)}",
@@ -25,7 +24,6 @@ class SiteOrgSeedsTestHelper
     }
   end
 
-  # TODO: faker
   def self.generate_random_site_params(org)
     {
       name: "Heyworth House#{rand(10000)}",
