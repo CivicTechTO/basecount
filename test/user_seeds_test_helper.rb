@@ -1,6 +1,10 @@
 require 'faker'
 
 class UserSeedsTestHelper
+  def self.clean
+    User.destroy_all
+  end
+
   def self.seed_all_users
     User.destroy_all
     {

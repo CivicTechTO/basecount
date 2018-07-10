@@ -33,6 +33,9 @@ class Role < ApplicationRecord
   def self.grant_user_role ( user, role, site_or_org = nil )
     self.validate_user_role_scope( user, role, site_or_org )
 
+    # does user have role already?
+    return user if self.user_has_role?(user, role, site_or_org)
+
     role_hash = {
       role: role,
       user: user
@@ -47,26 +50,29 @@ class Role < ApplicationRecord
       end
     end
 
-    Role.create!(role_hash)
+    user.roles << Role.new(role_hash)
 
-    # does user have role already?
     user
   end
 
   def self.user_has_role? ( user, role, site_or_org = nil )
     self.validate_user_role_scope( user, role, site_or_org )
+    role_string = role.to_s
+
+    return false if user.roles.empty?
 
     applicable_roles = user.roles.select do |s|
       if GLOBAL_ROLES.include? role
-        ## TODO: get back to this
+        s.role == role_string
       elsif ORG_ROLES.include? role
-
+        s.role == role_string and s.org == site_or_org
       elsif SITE_ROLES.include? role
-
+        s.role == role_string and s.site == site_or_org
       end
     end
 
-    applicable_roles > 0
+
+    applicable_roles.length > 0
   end
 
   def self.validate_user_role_scope( user, role, site_or_org )

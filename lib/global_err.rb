@@ -12,6 +12,7 @@ module GlobalErr
     site_org_set: 'Site or Org scope must be set if setting a scoped role',
     must_be_org: 'Argument must be an org',
     must_be_site: 'Argument must be an site',
+    required_param: 'Missing parameter',
   }
 
   # private_constant :InternalError
