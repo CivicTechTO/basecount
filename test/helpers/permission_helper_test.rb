@@ -3,6 +3,7 @@ require 'user_seeds_test_helper'
 require 'site_org_seeds_test_helper'
 
 class PermissionHelperTest < ActiveSupport::TestCase
+  include PermissionHelper
   
   def self.test_all_permissions(user,org1,org2,site1,site2,site3)
     
@@ -14,12 +15,12 @@ class PermissionHelperTest < ActiveSupport::TestCase
     #p.can_manage_site
     #p.can_add_site_counts
     #p.can_view_site_historical
-    p_global = PermissionHelper.new({user: user})
-    p_org1 = PermissionHelper.new({user: user, org: org1})
-    p_org2 = PermissionHelper.new({user: user, org: org2})
-    p_site1 = PermissionHelper.new({user: user, site: site1})
-    p_site2 = PermissionHelper.new({user: user, site: site2})
-    p_site3 = PermissionHelper.new({user: user, site: site3})
+    p_global = Permissions.new({user: user})
+    p_org1 = Permissions.new({user: user, org: org1})
+    p_org2 = Permissions.new({user: user, org: org2})
+    p_site1 = Permissions.new({user: user, site: site1})
+    p_site2 = Permissions.new({user: user, site: site2})
+    p_site3 = Permissions.new({user: user, site: site3})
 
     {
       global_view_site_details: p_global.can_view_global_site_details,
