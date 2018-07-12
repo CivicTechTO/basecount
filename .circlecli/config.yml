@@ -2,15 +2,16 @@ version: 2
 jobs:
   build:
     docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
-      - image: circleci/ruby:2.4.1-jessie
-      - run:
-        command: curl -sL https://deb.nodesource.com/setup_10.x | bash -
-      - run:
-        command: apt-get update && apt-get install -y nodejs build-essential
-      - run:
-        command: bundle install
-      - run:
-        command: npm install
+      - image: 2.4.4-jessie-node-browsers
+    working_directory: ~/repo
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run:
+        name: install dependencies
+        command: |
+          bundle install --jobs=4 --retry=3
+          npm install
+      - run:
+        name: run tests
+        command: |
+          rails test
