@@ -36,3 +36,6 @@ yarn-debug.log*
 
 # local development
 .rbenv-gemsets
+
+# Ignore Test Reports
+test/reports
