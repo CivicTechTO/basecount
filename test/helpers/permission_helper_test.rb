@@ -404,4 +404,8 @@ class PermissionHelperTest < ActiveSupport::TestCase
     assert_equal(expected_permissions,derived_permissions)
   end
 
+  test "a breaking test" do
+    assert_equal(true, false)
+  end
+
 end
