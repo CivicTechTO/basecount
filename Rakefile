@@ -3,8 +3,11 @@
 
 require_relative 'config/application'
 
-Rails.application.load_tasks
+if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
+  require 'ci/reporter/rake/minitest'
+end
 
+Rails.application.load_tasks
 # Replace yarn with npm
 Rake::Task['yarn:install'].clear if Rake::Task.task_defined?('yarn:install')
 Rake::Task['webpacker:yarn_install'].clear
