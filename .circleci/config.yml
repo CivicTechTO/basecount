@@ -52,4 +52,4 @@ jobs:
             bundle exec rake ci:setup:minitest test
           when: always
       - store_test_results:
-          path: ~/repo/test/reports/TEST-Minitest-Result.xml
+          path: ~/repo/test/reports/
