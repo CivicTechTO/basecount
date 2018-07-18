@@ -1,4 +1,4 @@
-FROM ruby:2.4.1-jessie
+FROM ruby:2.4.4-jessie
 
 RUN mkdir /app
 COPY . /app
