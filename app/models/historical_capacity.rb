@@ -1,2 +1,0 @@
-class HistoricalCapacity < ApplicationRecord
-end
