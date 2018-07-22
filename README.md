@@ -9,13 +9,15 @@ Helping respite centres communicate their population counts. This is a **citizen
 - [**React**](https://reactjs.org/)
 
 ### Requirements
-- ruby 2.4.1
-- node JS
+- ruby 2.4.4
+  - using [rvm](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv) is recommended
+- node JS v >= 8
 
 ### Local Development
 ```
   bundle install;
   npm install;
+  rake db:create db:setup;
   rails s;
 ```
 
