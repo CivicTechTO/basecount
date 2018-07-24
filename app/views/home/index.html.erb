@@ -1,14 +1,96 @@
-<!-- 
+<!--
   Zach put your html code here.
   If you have any CSS for the landing page
 -->
-<html>
-  <head>
-    <title>For Zach to change</title>
-    <%= stylesheet_pack_tag 'landing' %>
-  </head>
-  <body>
-    <h1>This</h1>
-    <p>should be changed</p>
-  </body>
-</html>
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>BaseCount | Home</title>
+      <%= stylesheet_pack_tag 'landing' %>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+
+      <main>
+        <!-- Landing Area -->
+        <div class="frame" id="landing">
+          <div id="landing-text">
+            <h2>Shelter Capacity
+              <br>
+              <span>Tracking Software</span>
+            </h2>
+            <div id="landing-text-inner">
+              <a href="#images" class="btn" id="view-work">
+                Check it out
+              </a>
+              <a href="#images" class="btn" id="sign-up">
+                Sign up for an account
+              </a>
+            </div>
+          </div>
+          <div id="landing-image"></div>
+        </div>
+
+        <div class="frame" id="description">
+          <div id="header">
+            <h2>Basecount will be an easy-to-use realtime data platform to centralize collection of information from low-barrier
+              sites
+            </h2>
+          </div>
+          <div id="diagram">
+            <div class="diagram-block" id="shelters">
+              <div class="diagram-sub-block" id="winter-respite">
+                <p>
+                  Winter Respite Site
+                </p>
+              </div>
+              <div class="diagram-sub-block" id="out-of-the-cold">
+                <p>
+                  Out of the Cold Program
+                </p>
+              </div>
+            </div>
+            <div class="diagram-block" id="arrow">
+              <img src="./images/Arrow2to1.svg" alt="">
+            </div>
+            <div class="diagram-block" id="diagram-logo">
+              <img src="./images/basecount-logo.png" alt="">
+            </div>
+            <div class="diagram-block" id="arrow">
+              <img src="./images/Arrow1to2.svg" alt="">
+            </div>
+            <div class="diagram-block" id="referral">
+              <div class="diagram-sub-block-2">
+                <p>
+                  211
+                </p>
+              </div>
+              <div class="diagram-sub-block-2">
+                <p>
+                  Central Intake
+                </p>
+              </div>
+              <div class="diagram-sub-block-2">
+                <p>
+                  Streets to Homes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame" id="sign-up-frame">
+          <h2>
+            Sorry! Basecount is a work in progress. We can't register users yet. But you can give us a shout at...
+          </h2>
+          <a href="mailto:basecount@gmail.com?Subject=Hello!" class="btn">basecount@gmail.com</a>
+        </div>
+      </main>
+
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+      <script src="js/index.js"></script>
+    </body>
+
+    </html>
