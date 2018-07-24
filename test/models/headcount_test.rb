@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HistoricalCapacityTest < ActiveSupport::TestCase
+class HeadcountTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

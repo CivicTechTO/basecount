@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_08_164945) do
+ActiveRecord::Schema.define(version: 2018_07_18_163131) do
 
   create_table "aspects", force: :cascade do |t|
     t.string "name"
@@ -18,16 +18,16 @@ ActiveRecord::Schema.define(version: 2018_07_08_164945) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "historical_capacities", force: :cascade do |t|
+  create_table "headcounts", force: :cascade do |t|
     t.integer "room_id"
     t.integer "recorded_by_id"
     t.datetime "recorded_at"
     t.integer "capacity"
-    t.integer "total"
+    t.integer "occupancy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recorded_by_id"], name: "index_historical_capacities_on_recorded_by_id"
-    t.index ["room_id"], name: "index_historical_capacities_on_room_id"
+    t.index ["recorded_by_id"], name: "index_headcounts_on_recorded_by_id"
+    t.index ["room_id"], name: "index_headcounts_on_room_id"
   end
 
   create_table "orgs", force: :cascade do |t|
