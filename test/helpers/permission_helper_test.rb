@@ -7,14 +7,14 @@ class PermissionHelperTest < ActiveSupport::TestCase
   
   def self.test_all_permissions(user,org1,org2,site1,site2,site3)
     
-    #p.can_manage_org_users
-    #p.can_manage_org_site_managers
-    #p.can_manage_org_sites
-    #p.can_view_org_historical
-    #p.can_manage_site_users
-    #p.can_manage_site
-    #p.can_add_site_counts
-    #p.can_view_site_historical
+    #p.can_manage_org_users?
+    #p.can_manage_org_site_managers?
+    #p.can_manage_org_sites?
+    #p.can_view_org_historical?
+    #p.can_manage_site_users?
+    #p.can_manage_site?
+    #p.can_add_site_counts?
+    #p.can_view_site_historical?
     p_global = Permissions.new({user: user})
     p_org1 = Permissions.new({user: user, org: org1})
     p_org2 = Permissions.new({user: user, org: org2})
@@ -23,34 +23,34 @@ class PermissionHelperTest < ActiveSupport::TestCase
     p_site3 = Permissions.new({user: user, site: site3})
 
     {
-      global_view_site_details: p_global.can_view_global_site_details,
-      global_view_counts: p_global.can_view_global_counts,
-      global_manage_orgs: p_global.can_manage_global_orgs,
-      global_manage_users: p_global.can_manage_global_users,
+      global_view_site_details: p_global.can_view_global_site_details?,
+      global_view_counts: p_global.can_view_global_counts?,
+      global_manage_orgs: p_global.can_manage_global_orgs?,
+      global_manage_users: p_global.can_manage_global_users?,
       
       # org
-      org_manage_users: p_org1.can_manage_org_users,
-      org2_manage_users: p_org2.can_manage_org_users,
-      org_manage_site_managers: p_org1.can_manage_org_site_managers,
-      org2_manage_site_managers: p_org2.can_manage_org_site_managers,
-      org_manage_sites: p_org1.can_manage_org_sites,
-      org2_manage_sites: p_org2.can_manage_org_sites,
-      org_view_historical: p_org1.can_view_org_historical,
-      org2_view_historical: p_org2.can_view_org_historical,
+      org_manage_users: p_org1.can_manage_org_users?,
+      org2_manage_users: p_org2.can_manage_org_users?,
+      org_manage_site_managers: p_org1.can_manage_org_site_managers?,
+      org2_manage_site_managers: p_org2.can_manage_org_site_managers?,
+      org_manage_sites: p_org1.can_manage_org_sites?,
+      org2_manage_sites: p_org2.can_manage_org_sites?,
+      org_view_historical: p_org1.can_view_org_historical?,
+      org2_view_historical: p_org2.can_view_org_historical?,
       
       # sites
-      site_manage_users: p_site1.can_manage_site_users,
-      site2_manage_users: p_site2.can_manage_site_users,
-      site3_manage_users: p_site3.can_manage_site_users,
-      site_manage_site: p_site1.can_manage_site,
-      site2_manage_site: p_site2.can_manage_site,
-      site3_manage_site: p_site3.can_manage_site,
-      site_add_counts: p_site1.can_add_site_counts,
-      site2_add_counts: p_site2.can_add_site_counts,
-      site3_add_counts: p_site3.can_add_site_counts,
-      site_view_historical: p_site1.can_view_site_historical,
-      site2_view_historical: p_site2.can_view_site_historical,
-      site3_view_historical: p_site3.can_view_site_historical,
+      site_manage_users: p_site1.can_manage_site_users?,
+      site2_manage_users: p_site2.can_manage_site_users?,
+      site3_manage_users: p_site3.can_manage_site_users?,
+      site_manage_site: p_site1.can_manage_site?,
+      site2_manage_site: p_site2.can_manage_site?,
+      site3_manage_site: p_site3.can_manage_site?,
+      site_add_counts: p_site1.can_add_site_counts?,
+      site2_add_counts: p_site2.can_add_site_counts?,
+      site3_add_counts: p_site3.can_add_site_counts?,
+      site_view_historical: p_site1.can_view_site_historical?,
+      site2_view_historical: p_site2.can_view_site_historical?,
+      site3_view_historical: p_site3.can_view_site_historical?,
     }
   end
 

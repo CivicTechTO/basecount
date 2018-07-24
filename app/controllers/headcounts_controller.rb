@@ -1,4 +1,6 @@
+
 class HeadcountsController < ApplicationController
+  include PermissionHelper
   before_action :set_headcount, only: [:show, :update, :destroy]
 
   # GET /headcounts
@@ -15,15 +17,23 @@ class HeadcountsController < ApplicationController
   # POST /headcounts
   # POST /headcounts.json
   def create
-    # TODO: does the incoming arg come through string or symbol?
-    puts 'room'
-    puts headcount_params[:room_id]
-    # headcount_params['capacity'] = 
-
-
-    headcount_params['recorded_at'] = Time.now
+    room = Room.find_by_id(headcount_params[:room_id])
+    return self.bad_request_json "Invalid room" if room.nil?
     
-    @headcount = Headcount.new(headcount_params)
+    # find site that the room belongs to
+    p = Permissions.new({
+      user: current_user,
+      site: room.site
+    })
+    return self.unauthorized_json unless user_signed_in? and p.can_add_site_counts?
+
+    # augment the parameters with expected values
+    default_params = {
+      recorded_at: Time.now,
+      recorded_by: current_user,
+    }
+    
+    @headcount = Headcount.new(headcount_params.merge default_params)
 
     if @headcount.save
       render :show, status: :created, location: @headcount
@@ -35,6 +45,20 @@ class HeadcountsController < ApplicationController
   # PATCH/PUT /headcounts/1
   # PATCH/PUT /headcounts/1.json
   def update
+    edit_window = Rails.application.config.headcount_edit_window_minutes
+
+    # find site that the room belongs to
+    p = Permissions.new({
+      user: current_user,
+      site: @headcount.room.site
+    })
+    return self.unauthorized_json unless user_signed_in? and p.can_add_site_counts?
+
+    # ensure headcount isn't too old
+    if @headcount.recorded_at < Time.now - edit_window.minutes
+      return self.bad_request_json("Headcount cannot be updated after #{edit_window} minutes")
+    end
+
     if @headcount.update(headcount_params)
       render :show, status: :ok, location: @headcount
     else
@@ -44,9 +68,9 @@ class HeadcountsController < ApplicationController
 
   # DELETE /headcounts/1
   # DELETE /headcounts/1.json
-  def destroy
-    @headcount.destroy
-  end
+  # def destroy
+  #   @headcount.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -56,6 +80,9 @@ class HeadcountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def headcount_params
-      params.fetch(:headcount, {})
+      params.require(:headcount).permit(
+        :room_id,
+        :occupancy
+      )
     end
 end
