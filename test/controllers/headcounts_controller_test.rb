@@ -17,18 +17,24 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
     @invalidUser = UserSeedsTestHelper.seed_user
     @invalidUser = Role.grant_user_role(@invalidUser, :global_dataviewer)
     
-    @headcount_create_params = {
+    @headcount_web_request_params = {
       room_id: @room.id,
       occupancy: 50,
-      recorded_by: @validUser,
-      recorded_at: Time.now
     }
 
-    @headcount = Headcount.create!(@headcount_create_params)
+    @headcount_manual_create_params = {
+      recorded_by: @validUser,
+      room: @room,
+      occupancy: 50,
+      recorded_at: Time.now,
+      capacity: 60
+    }
+
+    @headcount = Headcount.create!(@headcount_manual_create_params)
 
     # an old headcount
     old_time = Time.now - (Rails.application.config.headcount_edit_window_minutes + 1).minutes
-    @old_headcount = Headcount.create!(@headcount_create_params.merge({ recorded_at: old_time}))
+    @old_headcount = Headcount.create!(@headcount_manual_create_params.merge({ recorded_at: old_time}))
   end
 
   test "should get index" do
@@ -39,7 +45,7 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
   test "should create headcount" do
     sign_in @validUser
     assert_difference 'Headcount.count' do
-      post headcounts_url, params: { headcount: @headcount_create_params }, as: :json
+      post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
     end
 
     assert_response 201
@@ -57,13 +63,13 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't create headcount if signed out" do
-    post headcounts_url, params: { headcount: @headcount_create_params }, as: :json
+    post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
     assert_response 403
   end
 
   test "shouldn't create headcount if unauthorized user" do
     sign_in @invalidUser
-    post headcounts_url, params: { headcount: @headcount_create_params }, as: :json
+    post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
     assert_response 403
   end
 

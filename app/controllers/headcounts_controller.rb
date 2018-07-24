@@ -31,6 +31,7 @@ class HeadcountsController < ApplicationController
     default_params = {
       recorded_at: Time.now,
       recorded_by: current_user,
+      capacity: room.capacity,
     }
     
     @headcount = Headcount.new(headcount_params.merge default_params)
