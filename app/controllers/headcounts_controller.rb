@@ -3,15 +3,12 @@ class HeadcountsController < ApplicationController
   include PermissionHelper
   before_action :set_headcount, only: [:show, :update, :destroy]
 
-  # GET /headcounts
-  # GET /headcounts.json
-  def index
-    @headcounts = Headcount.all
-  end
 
   # GET /headcounts/1
   # GET /headcounts/1.json
   def show
+    #TODO: this needs to be locked down
+    self.not_implemented
   end
 
   # POST /headcounts
@@ -37,7 +34,7 @@ class HeadcountsController < ApplicationController
     @headcount = Headcount.new(headcount_params.merge default_params)
 
     if @headcount.save
-      render :show, status: :created, location: @headcount
+      render json: @headcount, status: 201
     else
       render json: @headcount.errors, status: :unprocessable_entity
     end
@@ -61,17 +58,11 @@ class HeadcountsController < ApplicationController
     end
 
     if @headcount.update(headcount_params)
-      render :show, status: :ok, location: @headcount
+      render json: @headcount, status: 200
     else
       render json: @headcount.errors, status: :unprocessable_entity
     end
   end
-
-  # DELETE /headcounts/1
-  # DELETE /headcounts/1.json
-  # def destroy
-  #   @headcount.destroy
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

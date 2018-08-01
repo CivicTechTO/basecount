@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
     self.generic_request_error(403, msg)
   end
 
+  def not_implemented
+    self.generic_request_error(501, 'Not yet implemented')
+  end
+
   def bad_request_json msg = nil
     self.generic_request_error(400,msg)
   end

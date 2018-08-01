@@ -2,52 +2,76 @@ class SitesController < ApplicationController
   include PermissionHelper
   before_action :set_site, only: [:show, :update, :destroy]
 
-  # GET /sites
-  # GET /sites.json
-  def index
-    @sites = Site.all
-  end
-
-  # GET /sites/1
-  # GET /sites/1.json
-  def show
-  end
-
-  # POST /sites
-  # POST /sites.json
+  # POST /api/sites/new
   def create
     org = Org.find_by_id(site_params[:org_id])
     return self.bad_request_json "Invalid Org" if org.nil?
 
     
     return self.unauthorized_json unless user_signed_in? and user.can_manage_org_sites? org
+    # TODO: need to auto geo-locate based on address
 
     @site = Site.new(site_params)
+    puts "site problems: #{@site.valid?}"
+    puts @site.errors.inspect
 
     if @site.save
-      render :show, status: :created, location: @site
+      render json: @site, status: 201
     else
       render json: @site.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /sites/1
-  # PATCH/PUT /sites/1.json
+  # GET /api/sites/:id
+  def show
+    self.not_implemented
+  end
+
+
+  # PUT /api/sites/:id
   def update
     return self.unauthorized_json unless user_signed_in? and user.can_manage_site? @site
     
+    # TODO: need to auto geo-locate based on address
+    
     if @site.update(site_params)
-      render :show, status: :ok, location: @site
+      render json: @site, status: 200
     else
       render json: @site.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /sites/1
-  # DELETE /sites/1.json
-  def destroy
-    @site.destroy
+  # GET /sites/:id/users
+  def users
+    self.not_implemented
   end
+
+  # POST /sites/:id/users
+  def add_user
+    self.not_implemented
+  end
+
+  # PUT /sites/:id/users/:uid
+  def edit_user
+    self.not_implemented
+  end
+
+  # DELETE /sites/:id/users/:uid
+  def remove_user
+    self.not_implemented
+  end
+
+  # GET /sites/:id/headcounts
+  def headcounts
+    self.not_implemented
+  end
+
+
+  # # DELETE /sites/1
+  # # DELETE /sites/1.json
+  # def destroy
+  #   @site.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -57,6 +81,11 @@ class SitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.fetch(:site, {})
+      params.require(:site).permit(
+        :name,
+        :address1,
+        :city,
+        :postal_code
+      )
     end
 end

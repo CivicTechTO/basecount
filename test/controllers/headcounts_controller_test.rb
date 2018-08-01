@@ -37,15 +37,10 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
     @old_headcount = Headcount.create!(@headcount_manual_create_params.merge({ recorded_at: old_time}))
   end
 
-  test "should get index" do
-    get headcounts_url, as: :json
-    assert_response :success
-  end
-
   test "should create headcount" do
     sign_in @validUser
     assert_difference 'Headcount.count' do
-      post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
+      post headcounts_new_path, params: { headcount: @headcount_web_request_params }, as: :json
     end
 
     assert_response 201
@@ -58,46 +53,46 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
       occupancy: 50
     }
 
-    post headcounts_url, params: { headcount: bad_room_params }, as: :json
+    post headcounts_new_path, params: { headcount: bad_room_params }, as: :json
     assert_response 400
   end
 
   test "shouldn't create headcount if signed out" do
-    post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
+    post headcounts_new_path, params: { headcount: @headcount_web_request_params }, as: :json
     assert_response 403
   end
 
   test "shouldn't create headcount if unauthorized user" do
     sign_in @invalidUser
-    post headcounts_url, params: { headcount: @headcount_web_request_params }, as: :json
+    post headcounts_new_path, params: { headcount: @headcount_web_request_params }, as: :json
     assert_response 403
   end
 
   test "should show headcount" do
-    get headcount_url(@headcount), as: :json
-    assert_response :success
+    get headcounts_show_path(@headcount), as: :json
+    assert_response 501 #not yet implemented
   end
 
   test "should update recently changed headcount" do
     sign_in @validUser
-    patch headcount_url(@headcount), params: { headcount: { occupancy: 10  } }, as: :json
+    put headcounts_update_path(@headcount), params: { headcount: { occupancy: 10  } }, as: :json
     assert_response 200
   end
 
   test "should not update old headcount" do
     sign_in @validUser
-    patch headcount_url(@old_headcount), params: { headcount: { occupancy: 20  } }, as: :json
+    put headcounts_update_path(@old_headcount), params: { headcount: { occupancy: 20  } }, as: :json
     assert_response 400
   end
 
   test "should not update headcount if signed out" do
-    patch headcount_url(@headcount), params: { headcount: { occupancy: 20  } }, as: :json
+    put headcounts_update_path(@headcount), params: { headcount: { occupancy: 20  } }, as: :json
     assert_response 403
   end
 
   test "should not update headcount if unauthorized user" do
     sign_in @invalidUser
-    patch headcount_url(@headcount), params: { headcount: { occupancy: 20  } }, as: :json
+    put headcounts_update_path(@headcount), params: { headcount: { occupancy: 20  } }, as: :json
     assert_response 403
   end
 
