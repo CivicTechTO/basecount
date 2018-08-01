@@ -1,4 +1,4 @@
-class OrgsController < ApplicationController
+class StateController < ApplicationController
   
   # GET /base_state
   def index

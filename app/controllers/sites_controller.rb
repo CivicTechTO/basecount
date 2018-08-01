@@ -8,7 +8,7 @@ class SitesController < ApplicationController
     return self.bad_request_json "Invalid Org" if org.nil?
 
     
-    return self.unauthorized_json unless user_signed_in? and user.can_manage_org_sites? org
+    return self.unauthorized_json unless user_signed_in? and current_user.can_manage_org_sites? org
     # TODO: need to auto geo-locate based on address
 
     @site = Site.new(site_params)
@@ -85,7 +85,8 @@ class SitesController < ApplicationController
         :name,
         :address1,
         :city,
-        :postal_code
+        :postal_code,
+        :org_id
       )
     end
 end
