@@ -4,4 +4,13 @@ class Site < ApplicationRecord
   has_many :schedules
   has_many :schedule_templates
   has_many :rooms
+
+  # TODO: need to auto geo-locate based on address
+  validates :name,
+    :address1,
+    :city,
+    :postal_code,
+    # :lat,
+    # :lng,
+    presence: true
 end

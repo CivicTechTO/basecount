@@ -1,38 +1,105 @@
-# require 'test_helper'
+require 'test_helper'
+require 'user_seeds_test_helper'
+require 'site_org_seeds_test_helper'
+require 'faker'
 
-# class SitesControllerTest < ActionDispatch::IntegrationTest
-#   setup do
-#     @site = sites(:one)
-#   end
+class SitesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
 
-#   test "should get index" do
-#     get sites_url, as: :json
-#     assert_response :success
-#   end
+  setup do
+    UserSeedsTestHelper.clean
+    SiteOrgSeedsTestHelper.clean
 
-#   test "should create site" do
-#     assert_difference('Site.count') do
-#       post sites_url, params: { site: {  } }, as: :json
-#     end
+    @site_request_params = {
+      name: "test",
+      address1: "test",
+      city: "test",
+      postal_code: "test",
+    }
 
-#     assert_response 201
-#   end
+    
+    @org = SiteOrgSeedsTestHelper.seed_org
+    @site = SiteOrgSeedsTestHelper.seed_site(@org)
+    
+    @site_create_params = @site_request_params.merge(org_id: @org.id)
 
-#   test "should show site" do
-#     get site_url(@site), as: :json
-#     assert_response :success
-#   end
+    @org_user = UserSeedsTestHelper.seed_user
+    @org_user = Role.grant_user_role(@org_user, :org_employee, @org)
+    @invalid_user = UserSeedsTestHelper.seed_user
+    @invalid_user = Role.grant_user_role(@invalid_user, :global_dataviewer)
+  end
 
-#   test "should update site" do
-#     patch site_url(@site), params: { site: {  } }, as: :json
-#     assert_response 200
-#   end
+  test "should create site - logged in & authed" do
+    skip("Broken -- need to fix.")
+    sign_in @org_user
+    # TODO: Need to check auth
+    assert_difference('Site.count') do
+      post sites_new_path, params: { site: @site_create_params }, as: :json
+    end
 
-#   test "should destroy site" do
-#     assert_difference('Site.count', -1) do
-#       delete site_url(@site), as: :json
-#     end
+    assert_response 201
+  end
 
-#     assert_response 204
-#   end
-# end
+  test "shouldn't create site - bad user" do
+    sign_in @invalid_user
+    # TODO: Need to check auth
+    assert_no_changes('Site.count') do
+      post sites_new_path, params: { site: @site_create_params }, as: :json
+    end
+
+    assert_response 403
+  end
+
+
+  test "should show site" do
+    # TODO: Not yet implemented
+    get sites_show_path(@site)
+    assert_response :error
+  end
+
+  
+
+  test "should update site" do
+    skip("Broken -- need to fix.")
+    # TODO: need to check auth
+    # TODO: will need to accept general, services, and schedule:
+    # https://www.figma.com/proto/dk4oQvyGyFsljLaKXSBwM9zC/basecount-wireframes?redirected=1&scaling=min-zoom&node-id=98%3A1499
+    put sites_update_path(@site), params: { site: @site_request_params.merge({name: 'test2'}) }, as: :json
+    assert_response 200
+  end
+
+  test "Show users who have permission on a site" do
+    get sites_users_show_path(@site)
+    # TODO: Not yet implemented
+    assert_response 501
+  end
+
+
+  test "Add a user to a site" do
+    post sites_user_add_path(@site)
+    # TODO: Not yet implemented
+    assert_response 501
+  end
+
+
+  test "Edit a user on a site" do
+    put sites_user_edit_path(id: 1, uid: 1)
+    # TODO: Not yet implemented
+    assert_response 501
+  end
+
+
+  test "Remove a user from a site" do
+    delete sites_user_remove_path(id: 1, uid: 1)
+    # TODO: Not yet implemented
+    assert_response 501
+  end
+
+
+  test "See site headcounts" do
+    get sites_headcounts_path(@site)
+    # TODO: Not yet implemented
+    assert_response 501
+  end
+
+end
