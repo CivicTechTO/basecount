@@ -1,19 +1,15 @@
 class SitesController < ApplicationController
   include PermissionHelper
-  before_action :set_site, only: [:show, :update, :destroy]
+  before_action :set_site, only: [:show, :update, :destroy, :users, :add_user, :edit_user, :remove_user, :headcounts]
 
   # POST /api/sites/new
   def create
     org = Org.find_by_id(site_params[:org_id])
     return self.bad_request_json "Invalid Org" if org.nil?
-
-    
     return self.unauthorized_json unless user_signed_in? and current_user.can_manage_org_sites? org
+    
     # TODO: need to auto geo-locate based on address
-
     @site = Site.new(site_params)
-    puts "site problems: #{@site.valid?}"
-    puts @site.errors.inspect
 
     if @site.save
       render json: @site, status: 201
@@ -30,7 +26,7 @@ class SitesController < ApplicationController
 
   # PUT /api/sites/:id
   def update
-    return self.unauthorized_json unless user_signed_in? and user.can_manage_site? @site
+    return self.unauthorized_json unless user_signed_in? and user.can_manage_site?(@site)
     
     # TODO: need to auto geo-locate based on address
     
@@ -43,7 +39,9 @@ class SitesController < ApplicationController
 
   # GET /sites/:id/users
   def users
-    self.not_implemented
+    return self.unauthorized_json unless user_signed_in? and current_user.can_manage_site_users?(@site)
+    
+    render json: @site.users
   end
 
   # POST /sites/:id/users
@@ -65,13 +63,6 @@ class SitesController < ApplicationController
   def headcounts
     self.not_implemented
   end
-
-
-  # # DELETE /sites/1
-  # # DELETE /sites/1.json
-  # def destroy
-  #   @site.destroy
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

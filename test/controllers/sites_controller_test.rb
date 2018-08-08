@@ -24,9 +24,11 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
     @site_create_params = @site_request_params.merge(org_id: @org.id)
 
     @org_user = UserSeedsTestHelper.seed_user
-    @org_user = Role.grant_user_role(@org_user, :org_employee, @org)
+    Role.grant_user_role(@org_user, :org_employee, @org)
     @invalid_user = UserSeedsTestHelper.seed_user
-    @invalid_user = Role.grant_user_role(@invalid_user, :global_dataviewer)
+    Role.grant_user_role(@invalid_user, :global_dataviewer)
+    @site_user = UserSeedsTestHelper.seed_user
+    Role.grant_user_role(@site_user, :site_employee, @site)
   end
 
   test "should create site - logged in & authed" do
@@ -68,10 +70,29 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
   end
 
-  test "Show users who have permission on a site" do
+  test "Show users who have permission on a site - not signed in" do
     get sites_users_show_path(@site)
-    # TODO: Not yet implemented
-    assert_response 501
+    assert_response 403
+  end
+
+  test "Show users who have permission on a site - wrong user permissions" do
+    sign_in @invalid_user
+    get sites_users_show_path(@site)
+    assert_response 403
+  end
+
+  test "Show users who have permission on a site - signed in" do
+    sign_in @org_user
+    get sites_users_show_path(@site)
+    
+    json_response = JSON.parse(response.body)
+    expected_hash = [{
+      "user" => @site_user.format_for_frontend,
+      "role" => "site_employee"
+    }]
+    
+    assert_equal(expected_hash, json_response)
+    assert_response 200
   end
 
 

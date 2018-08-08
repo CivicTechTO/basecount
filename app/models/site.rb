@@ -4,6 +4,7 @@ class Site < ApplicationRecord
   has_many :schedules
   has_many :schedule_templates
   has_many :rooms
+  has_many :roles
 
   # TODO: need to auto geo-locate based on address
   validates :name,
@@ -13,4 +14,13 @@ class Site < ApplicationRecord
     # :lat,
     # :lng,
     presence: true
+  
+    def users
+      self.roles.map do |r|
+        {
+          user: r.user.format_for_frontend,
+          role: r.role
+        }
+      end
+    end
 end

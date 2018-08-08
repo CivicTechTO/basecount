@@ -34,7 +34,7 @@ class OrgsControllerTest < ActionDispatch::IntegrationTest
 
   test "orgs_user_remove" do
     #TODO: Not yet implemented
-    delete orgs_user_remove_path(@org), params: {}
+    delete orgs_user_remove_path(id: @org.id, uid: @user.id), params: {}
     assert_response 501
   end
 

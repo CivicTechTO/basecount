@@ -6,6 +6,9 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   
   setup do
+    SiteOrgSeedsTestHelper.clean
+    UserSeedsTestHelper.clean
+    
     @org = SiteOrgSeedsTestHelper.seed_org
     @site = SiteOrgSeedsTestHelper.seed_site(@org)
     @room = Room.create({

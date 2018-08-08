@@ -18,7 +18,7 @@ class OrgsController < ApplicationController
   end
 
   
-  # DELETE /orgs/:id/users
+  # DELETE /orgs/:id/users/:uid
   def remove_user
     self.not_implemented
   end
