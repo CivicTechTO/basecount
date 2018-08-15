@@ -8,11 +8,7 @@ class SitesController < ApplicationController
     org = Org.find_by_id(site_params[:general][:org_id])
     return self.bad_request_json "Invalid Org" if org.nil?
     return self.unauthorized_json unless user_signed_in? and current_user.can_manage_org_sites? org
-    
-    site_create_params = site_params[:general].merge( site_params[:services] )
-    # convert populations
-    
-    @site = Site.new(site_create_params)
+    @site = Site.new_from_frontend(site_params)
 
     if @site.save
       render json: @site, status: 201
@@ -23,17 +19,19 @@ class SitesController < ApplicationController
 
   # GET /api/sites/:id
   def show
-    self.not_implemented
+    return self.unauthorized_json unless user_signed_in? and current_user.can_view_site_historical? @site
+    
+    render json: @site.to_frontend
   end
 
 
   # PUT /api/sites/:id
   def update
     return self.unauthorized_json unless user_signed_in? and current_user.can_manage_site?(@site)
+
+    # TODO: Need to strip away org_id as that shouldn't be possible to update
     
-    # TODO: need to auto geo-locate based on address
-    
-    if @site.update(site_params)
+    if @site.update_from_frontend(site_params)
       render json: @site, status: 200
     else
       render json: @site.errors, status: :unprocessable_entity
@@ -91,8 +89,8 @@ class SitesController < ApplicationController
       )
 
       services = params.require(:services).permit(
-        :service_text,
-        :populations_served
+        :services,
+        populations: []
       )
 
       # TODO: Schedule will be added in the future

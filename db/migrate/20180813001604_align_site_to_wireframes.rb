@@ -5,7 +5,7 @@ class AlignSiteToWireframes < ActiveRecord::Migration[5.2]
     change_table :sites do |t|
       t.boolean "active", default: true
       t.string :populations
-      t.integer "phone"
+      t.string "phone"
       t.rename :address1, :address
       t.rename :description, :services
 

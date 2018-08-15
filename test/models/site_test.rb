@@ -61,21 +61,32 @@ class SiteTest < ActiveSupport::TestCase
 
   test "add to population whitelist" do
     site_for_pop =  SiteOrgSeedsTestHelper.seed_site(@org)
-    site_for_pop.populations = [:women, :men, :children]
+    site_for_pop.populations = [2,4,3]
     expected = [
-      { code: :women, pretty: "Women" },
-      { code: :men, pretty: "Men" },
-      { code: :children, pretty: "Children" },
+      { id: 2, display: "Men" },
+      { id: 4, display: "Youth" },
+      { id: 3, display: "Children" },
     ]
     assert_equal(expected, site_for_pop.populations)
   end
 
   test "create from frontend hash" do
     s = Site.new_from_frontend(@site_frontend_hash)
-
     s.save!
-    puts s
-    assert true
+    assert s.valid?
+  end
+
+  test "to frontend format" do
+    s = Site.new_from_frontend(@site_frontend_hash)
+    expected = @site_frontend_hash.clone
+    
+    expected[:services][:populations] = [
+      { id: 1, display: "Women" },
+      { id: 2, display: "Men" },
+      { id: 3, display: "Children" },
+    ]
+    
+    assert_equal(expected, s.to_frontend)
   end
 
 

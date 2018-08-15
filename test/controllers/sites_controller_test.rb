@@ -41,8 +41,8 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
 
     @org_user = UserSeedsTestHelper.seed_user
     Role.grant_user_role(@org_user, :org_employee, @org)
-    @invalid_user = UserSeedsTestHelper.seed_user
-    Role.grant_user_role(@invalid_user, :global_dataviewer)
+    @dataviewer_user = UserSeedsTestHelper.seed_user
+    Role.grant_user_role(@dataviewer_user, :global_dataviewer)
     @site_user = UserSeedsTestHelper.seed_user
     Role.grant_user_role(@site_user, :site_employee, @site)
   end
@@ -59,13 +59,11 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
       post sites_new_path, params: @site_create_params, as: :json
     end
 
-    puts @response.body
-
     assert_response 201
   end
 
   test "shouldn't create site - bad user" do
-    sign_in @invalid_user
+    sign_in @dataviewer_user
     assert_no_changes('Site.count') do
       post sites_new_path, params: @site_create_params, as: :json
     end
@@ -74,10 +72,23 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should show site" do
-    # TODO: Not yet implemented
+  test "should show site - logged in & authed" do
+    sign_in @org_user
+    site = Site.new_from_frontend(@site_create_params)
+    site.save
+    
+    get sites_show_path(site)
+    json_response = JSON.parse(response.body)
+
+    assert_equal(@org.id, json_response["general"]["org_id"])
+    assert_response 200
+  end
+
+  test "shouldn't show site - bad user" do
+    sign_in @dataviewer_user
     get sites_show_path(@site)
-    assert_response :error
+
+    assert_response 403
   end
 
   
@@ -94,7 +105,7 @@ class SitesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Show users who have permission on a site - wrong user permissions" do
-    sign_in @invalid_user
+    sign_in @dataviewer_user
     get sites_users_show_path(@site)
     assert_response 403
   end

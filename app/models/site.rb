@@ -15,38 +15,37 @@ class Site < ApplicationRecord
   :phone,
   presence: true
 
+  def self.convert_attrs_from_frontend_hash ( frontend_hash )
+    frontend_hash[:general].merge(frontend_hash[:services])
+  end
 
   def self.new_from_frontend ( frontend_hash )
-    create_arguments = frontend_hash[:general].merge(frontend_hash[:services])
-
-    # now convert array to pretty
-    puts create_arguments
-    self.new(create_arguments)
+    self.new(self.convert_attrs_from_frontend_hash ( frontend_hash ) )
   end
+
+  def update_from_frontend ( frontend_hash )
+    self.update(Site.convert_attrs_from_frontend_hash ( frontend_hash ) )
+  end
+
 
 
   @@population_codes = [
-    { id: :women, pretty: "Women" },
-    { id: :men, pretty: "Men" },
-    { id: :children, pretty: "Children" },
-    { id: :youth, pretty: "Youth" },
-    { id: :trans, pretty: "Trans" },
+    { id: 1, display: "Women" },
+    { id: 2, display: "Men" },
+    { id: 3, display: "Children" },
+    { id: 4, display: "Youth" },
+    { id: 5, display: "Trans" },
   ]
-  
-
-
 
   def populations
-    self[:populations].map.with_index do |v,i|
-      @@population_codes[i]
+    self[:populations].map do |pop_id|
+      @@population_codes.find{ |popcode| popcode[:id] == pop_id }
     end
   end
 
-  # When setting, it should set by an array of codes
-  def populations=(array_of_codes)
-    self[:populations] = array_of_codes.map do |code|
-      @@population_codes.find { |pc| pc[:code] == code }
-    end
+  # When setting, it should set by an array of IDs
+  def populations=(array_of_ids)
+    self[:populations] = array_of_ids
   end
 
 
@@ -60,21 +59,22 @@ class Site < ApplicationRecord
   end
 
 
-  def extra_info
+  def to_frontend
     {
       general: {
+        org_id: self.org_id,
         name: self.name,
         address: self.address,
         postal_code: self.postal_code,
         phone: self.phone,
       },
       services: {
-        service_text: self.services,
-        populations_served: self.populations
+        services: self.services,
+        populations: self.populations
       },
-      schedule: {
-        status: "Not yet implemented"
-      }
+      # schedule: {
+      #   status: "Not yet implemented"
+      # }
     }
   end
 

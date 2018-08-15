@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_001604) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.string "populations"
-    t.integer "phone"
+    t.string "phone"
     t.index ["org_id"], name: "index_sites_on_org_id"
   end
 
