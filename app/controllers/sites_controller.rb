@@ -1,15 +1,18 @@
 class SitesController < ApplicationController
   include PermissionHelper
   before_action :set_site, only: [:show, :update, :destroy, :users, :add_user, :edit_user, :remove_user, :headcounts]
+  before_action :set_user, only: [:edit_user, :remove_user]
 
   # POST /api/sites/new
   def create
-    org = Org.find_by_id(site_params[:org_id])
+    org = Org.find_by_id(site_params[:general][:org_id])
     return self.bad_request_json "Invalid Org" if org.nil?
     return self.unauthorized_json unless user_signed_in? and current_user.can_manage_org_sites? org
     
-    # TODO: need to auto geo-locate based on address
-    @site = Site.new(site_params)
+    site_create_params = site_params[:general].merge( site_params[:services] )
+    # convert populations
+    
+    @site = Site.new(site_create_params)
 
     if @site.save
       render json: @site, status: 201
@@ -26,7 +29,7 @@ class SitesController < ApplicationController
 
   # PUT /api/sites/:id
   def update
-    return self.unauthorized_json unless user_signed_in? and user.can_manage_site?(@site)
+    return self.unauthorized_json unless user_signed_in? and current_user.can_manage_site?(@site)
     
     # TODO: need to auto geo-locate based on address
     
@@ -67,17 +70,38 @@ class SitesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_site
-      @site = Site.find(params[:id])
+      id = params[:id] || params[:general][:org_id]
+      @site = Site.find_by_id(id)
+      return self.not_found_json if @site.nil?
+    end
+
+    def set_user
+      @user = User.find_by_id(params[:uid])
+      return self.not_found_json if @user.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(
+      general = params.require(:general).permit(
         :name,
-        :address1,
-        :city,
+        :address,
         :postal_code,
+        :phone,
         :org_id
       )
+
+      services = params.require(:services).permit(
+        :service_text,
+        :populations_served
+      )
+
+      # TODO: Schedule will be added in the future
+      # schedule = params.require(:schedule).permit()
+
+      { 
+        general: general,
+        services: services,
+        # schedule: schedule 
+      }
     end
 end
