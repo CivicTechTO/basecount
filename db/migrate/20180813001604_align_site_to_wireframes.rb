@@ -14,9 +14,6 @@ class AlignSiteToWireframes < ActiveRecord::Migration[5.2]
       t.remove :address2
       t.remove :city
     end
-    change_table :aspects do |t|
-      t.integer "type"
-    end
 
     drop_table :population_whitelists
   end
@@ -34,9 +31,6 @@ class AlignSiteToWireframes < ActiveRecord::Migration[5.2]
       t.string :city
       t.decimal :lat, precision: 10, scale: 6
       t.decimal :lng, precision: 10, scale: 6
-    end
-    change_table :aspects do |t|
-      t.remove :type
     end
 
     create_table :population_whitelists do |t|

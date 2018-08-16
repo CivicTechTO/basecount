@@ -47,6 +47,8 @@ class SitesController < ApplicationController
 
   # POST /sites/:id/users
   def add_user
+    # should either accept a net new user object, OR an ID.
+    # Need to do user stuff first
     self.not_implemented
   end
 

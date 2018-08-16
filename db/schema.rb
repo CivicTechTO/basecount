@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2018_08_13_001604) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "type"
   end
 
   create_table "aspects_sites", force: :cascade do |t|
