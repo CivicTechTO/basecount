@@ -35,6 +35,7 @@ class Site < ApplicationRecord
     { id: 3, display: "Children" },
     { id: 4, display: "Youth" },
     { id: 5, display: "Trans" },
+    { id: 5, display: "Families" },
   ]
 
   def populations
