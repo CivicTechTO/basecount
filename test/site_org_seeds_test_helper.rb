@@ -5,12 +5,21 @@ class SiteOrgSeedsTestHelper
   def self.clean
     Org.destroy_all
     Site.destroy_all
+    Aspect.destroy_all
   end
 
   def self.seed_site (org)
     raise GlobalErr::ERRORS[:required_param] if org.nil?
     Site.create!(generate_random_site_params(org))
   end
+
+  def self.seed_aspects
+    Aspect.create!([
+      { name: "Wheelchair Accessible" },
+      { name: "Other property" },
+    ])
+  end
+
 
   def self.seed_org
     Org.create!(generate_random_org_params)
@@ -28,13 +37,10 @@ class SiteOrgSeedsTestHelper
     {
       name: "Heyworth House#{rand(10000)}",
       org: org,
-      address1: Faker::Address.street_address,
-      address2: '',
-      city: 'Toronto',
+      address: Faker::Address.street_address,
       postal_code: 'M4C 1L7',
-      description: '',
-      lat: Faker::Address.latitude,
-      lng: Faker::Address.longitude,
+      services: '',
+      phone: '4165271111'
     }
   end
 

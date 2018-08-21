@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       get     '/:id/sites', to: 'orgs#sites', as: 'orgs_sites'
       get     '/:id/users', to: 'orgs#users', as: 'orgs_users_show'
       post    '/:id/users', to: 'orgs#add_user', as: 'orgs_user_add'
-      delete  '/:id/users', to: 'orgs#remove_user', as: 'orgs_user_remove'
+      delete  '/:id/users/:uid', to: 'orgs#remove_user', as: 'orgs_user_remove'
       put     '/:id/users/:uid', to: 'orgs#edit_user', as: 'orgs_user_edit'
     end
     

@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     self.generic_request_error(501, 'Not yet implemented')
   end
 
+  def not_found_json
+    self.generic_request_error(404, 'Not found')
+  end
+
   def bad_request_json msg = nil
     self.generic_request_error(400,msg)
   end

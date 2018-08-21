@@ -16,6 +16,8 @@ class GrantRoleTest < ActiveSupport::TestCase
     @site2 = SiteOrgSeedsTestHelper.seed_site(@org)
   end
 
+  # TODO: should one be able to add a user to multiple global roles, or multiple site roles on the same site, or multiple org roles on the same org?
+
   test 'Valid Role' do
     assert Role.grant_user_role(@user,:global_admin)
   end

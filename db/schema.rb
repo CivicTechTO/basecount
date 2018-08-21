@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_163131) do
+ActiveRecord::Schema.define(version: 2018_08_13_001604) do
 
   create_table "aspects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "aspects_sites", force: :cascade do |t|
+    t.integer "site_id"
+    t.integer "aspect_id"
+    t.index ["aspect_id"], name: "index_aspects_sites_on_aspect_id"
+    t.index ["site_id"], name: "index_aspects_sites_on_site_id"
   end
 
   create_table "headcounts", force: :cascade do |t|
@@ -36,14 +43,6 @@ ActiveRecord::Schema.define(version: 2018_07_18_163131) do
     t.string "subdomain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "population_whitelists", force: :cascade do |t|
-    t.integer "code"
-    t.integer "site_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_population_whitelists_on_site_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -87,24 +86,16 @@ ActiveRecord::Schema.define(version: 2018_07_18_163131) do
 
   create_table "sites", force: :cascade do |t|
     t.string "name"
-    t.string "address1"
-    t.string "address2"
-    t.string "city"
+    t.string "address"
     t.string "postal_code"
-    t.string "description"
-    t.decimal "lat", precision: 10, scale: 6
-    t.decimal "lng", precision: 10, scale: 6
+    t.string "services"
     t.integer "org_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+    t.string "populations"
+    t.string "phone"
     t.index ["org_id"], name: "index_sites_on_org_id"
-  end
-
-  create_table "sites_aspects", force: :cascade do |t|
-    t.integer "site_id"
-    t.integer "aspect_id"
-    t.index ["aspect_id"], name: "index_sites_aspects_on_aspect_id"
-    t.index ["site_id"], name: "index_sites_aspects_on_site_id"
   end
 
   create_table "users", force: :cascade do |t|
