@@ -10,4 +10,15 @@ class Headcount < ApplicationRecord
     :capacity,
     presence: true
 
+  def for_frontend
+    {
+      id:self.id,
+      site: self.room.site.id,
+      recorded_by_id: self.recorded_by_id,
+      recorded_at: self.recorded_at,
+      capacity: self.capacity,
+      occupancy: self.occupancy,
+    }
+  end
+
 end

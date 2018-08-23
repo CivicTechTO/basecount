@@ -7,22 +7,18 @@ class HeadcountsController < ApplicationController
   # GET /headcounts/1
   # GET /headcounts/1.json
   def show
-    #TODO: this needs to be locked down
-    self.not_implemented
+    return self.unauthorized_json unless user_signed_in? and current_user.can_view_global_counts?
+    render json: @headcount.for_frontend
   end
 
   # POST /headcounts
   # POST /headcounts.json
   def create
+    #TODO: should I expose room right now?
     room = Room.find_by_id(headcount_params[:room_id])
     return self.bad_request_json "Invalid room" if room.nil?
     
-    # find site that the room belongs to
-    p = Permissions.new({
-      user: current_user,
-      site: room.site
-    })
-    return self.unauthorized_json unless user_signed_in? and p.can_add_site_counts?
+    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? room.site
 
     # augment the parameters with expected values
     default_params = {
@@ -34,7 +30,7 @@ class HeadcountsController < ApplicationController
     @headcount = Headcount.new(headcount_params.merge default_params)
 
     if @headcount.save
-      render json: @headcount, status: 201
+      render json: @headcount.for_frontend, status: 201
     else
       render json: @headcount.errors, status: :unprocessable_entity
     end
@@ -45,12 +41,7 @@ class HeadcountsController < ApplicationController
   def update
     edit_window = Rails.application.config.headcount_edit_window_minutes
 
-    # find site that the room belongs to
-    p = Permissions.new({
-      user: current_user,
-      site: @headcount.room.site
-    })
-    return self.unauthorized_json unless user_signed_in? and p.can_add_site_counts?
+    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? headcount.room.site
 
     # ensure headcount isn't too old
     if @headcount.recorded_at < Time.now - edit_window.minutes
@@ -58,7 +49,7 @@ class HeadcountsController < ApplicationController
     end
 
     if @headcount.update(headcount_params)
-      render json: @headcount, status: 200
+      render json: @headcount.for_frontend, status: 200
     else
       render json: @headcount.errors, status: :unprocessable_entity
     end

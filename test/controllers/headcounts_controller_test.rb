@@ -17,8 +17,8 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
     })
     @validUser = UserSeedsTestHelper.seed_user
     @validUser = Role.grant_user_role(@validUser, :site_employee, @site)
-    @invalidUser = UserSeedsTestHelper.seed_user
-    @invalidUser = Role.grant_user_role(@invalidUser, :global_dataviewer)
+    @dataViewerUser = UserSeedsTestHelper.seed_user
+    @dataViewerUser = Role.grant_user_role(@dataViewerUser, :global_dataviewer)
     
     @headcount_web_request_params = {
       room_id: @room.id,
@@ -66,14 +66,23 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't create headcount if unauthorized user" do
-    sign_in @invalidUser
+    sign_in @dataViewerUser
     post headcounts_new_path, params: { headcount: @headcount_web_request_params }, as: :json
     assert_response 403
   end
 
   test "should show headcount" do
+    sign_in @dataViewerUser
     get headcounts_show_path(@headcount), as: :json
-    assert_response 501 #not yet implemented
+    json_body = JSON.parse(response.body)
+    expected_keys = ["id","site","recorded_by_id","recorded_at","capacity","occupancy"]
+    assert(expected_keys.eql? json_body.keys)
+    assert_response 200
+  end
+
+  test "shouldn't show headcount to logged out user" do
+    get headcounts_show_path(@headcount), as: :json
+    assert_response 403
   end
 
   test "should update recently changed headcount" do
@@ -94,16 +103,9 @@ class HeadcountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update headcount if unauthorized user" do
-    sign_in @invalidUser
+    sign_in @dataViewerUser
     put headcounts_update_path(@headcount), params: { headcount: { occupancy: 20  } }, as: :json
     assert_response 403
   end
 
-  # test "should destroy headcount" do
-  #   assert_difference('Headcount.count', -1) do
-  #     delete headcount_url(@headcount), as: :json
-  #   end
-
-  #   assert_response 204
-  # end
 end
