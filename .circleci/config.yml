@@ -38,7 +38,7 @@ jobs:
       ###
       - restore_cache:
           keys:
-            - npm-cache-v1-{{ checksum "package-lock.json" }}
+            - npm-cache-v1-{{ checksum "client/package-lock.json" }}
             - v1-npm-deps-
       - run: 
           name: Install Node Dependencies
@@ -47,9 +47,9 @@ jobs:
           name: Build production files
           command: cd client && npm run build
       - save_cache:
-          key: npm-cache-v1-{{ checksum "package-lock.json" }}
+          key: npm-cache-v1-{{ checksum "client/package-lock.json" }}
           paths:
-            - node_modules
+            - client/node_modules
       - run: 
           command: |
             bundle exec rake ci:setup:minitest test

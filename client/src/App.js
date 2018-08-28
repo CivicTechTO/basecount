@@ -10,6 +10,7 @@ import Users from "./components/Users";
 import Account from "./components/Account";
 import "./App.css";
 import data from "./data/front-end";
+import * as Backend from "./data/backend";
 
 class App extends Component {
   state = {
@@ -44,6 +45,10 @@ class App extends Component {
       siteServices: Object.values(siteServices),
       sitePopulations: Object.values(sitePopulations),
       permission_levels
+    });
+    Backend.getState().then( data => {
+      console.log('😎 I *could* be setting state with this:');
+      console.log(data);
     });
   }
 

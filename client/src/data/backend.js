@@ -1,5 +1,5 @@
 
-export const backendCommunicator = ( url, verb, dataToSend = null ) => {
+const backendRequest = ( url, verb, dataToSend = null ) => {
   const accepted_verbs = ['get', 'post', 'delete', 'put'];
   if( ! accepted_verbs.includes(verb.toLowerCase()) ){
     throw `${verb} is an invalid HTTP verb.`;
@@ -21,12 +21,20 @@ export const backendCommunicator = ( url, verb, dataToSend = null ) => {
     fetchParams.body = JSON.stringify(dataToSend);
   }
 
+  // TODO: need standardized errors around logged in / logged out issues
+
   return fetch(
       url,
       fetchParams
     )
     .then( response => response.json())
-    .then( resultJSON => {
-      console.log(resultJSON);
-    });
 }
+
+// ---------------------
+// Backend access methods
+// ---------------------
+
+/** gets the base state for the application */
+export const getState = () => backendRequest("/api/base_state", "get");
+
+// TODO: add methods for all backend requests

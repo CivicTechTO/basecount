@@ -16,10 +16,14 @@ Helping respite centres communicate their population counts. This is a **citizen
 ### Local Development
 ```
   bundle install;
+  cd client; 
   npm install;
+  cd ../;
   rake db:create db:setup;
-  rails s;
+  bundle exec foreman start;
 ```
+
+`foreman` will start the back end, as well as the front end with hot reloading. The site will be served on port 3000, with the rails server at 3001 being proxied into 3000.
 
 ### Testing
 ```
