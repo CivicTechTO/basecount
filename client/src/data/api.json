@@ -1,0 +1,66 @@
+{
+  "users": {
+    "1": {
+      "first_name": "Andrew",
+      "last_name": "Carreiro",
+      "email": "andrewcarreiro@gmail.com"
+    },
+    "2": {
+      "first_name": "Zachary",
+      "last_name": "Donsky",
+      "email": "zack@civictech.ca"
+    }
+  },
+  "sites": {
+    "1": {
+      "name": "Heyworth House",
+      "history": [
+        {
+          "recorded_by": 1,
+          "recorded_at": 1531269797
+        }
+      ],
+      "managers": [2],
+      "employees": [1]
+    }
+  },
+  "orgs": {
+    "1": {
+      "name": "Dixon Hall",
+      "history": [
+        {
+          "recorded_by": 1,
+          "recorded_at": 1531269797
+        }
+      ],
+      "managers": [2],
+      "employees": [1]
+    }
+  },
+  "permission_levels": {
+    "site_employee": {
+      "pretty_name": "Site Employee",
+      "code": 0
+    },
+    "site_manager": {
+      "pretty_name": "Site Manager",
+      "code": 1
+    },
+    "org_employee": {
+      "pretty_name": "Org Employee",
+      "code": 2
+    },
+    "org_manager": {
+      "pretty_name": "Org Manager",
+      "code": 3
+    },
+    "global_admin": {
+      "pretty_name": "Global Admin",
+      "code": 4
+    },
+    "global_dataviewer": {
+      "pretty_name": "Global Dataviewer",
+      "code": 5
+    }
+  }
+}

@@ -2,7 +2,11 @@ class StateController < ApplicationController
   
   # GET /base_state
   def index
-    self.not_implemented
+    testJson = {
+      foo: "bar"
+    }
+ 
+    render json: testJson
   end
 
 end

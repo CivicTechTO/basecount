@@ -39,3 +39,6 @@ yarn-debug.log*
 
 # Ignore Test Reports
 test/reports
+
+# generated from frontend
+public/app/*

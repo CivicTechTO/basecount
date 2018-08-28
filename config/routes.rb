@@ -38,4 +38,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  if Rails.env.production?
+    scope :app do
+      get '/', to: 'home#app'
+      get '*path', to: 'home#app'
+    end
+  end
+
 end
