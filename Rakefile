@@ -8,9 +8,3 @@ if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
 end
 
 Rails.application.load_tasks
-# Replace yarn with npm
-Rake::Task['yarn:install'].clear if Rake::Task.task_defined?('yarn:install')
-Rake::Task['webpacker:yarn_install'].clear
-Rake::Task['webpacker:check_yarn'].clear
-Rake::Task.define_task('webpack:verify_install' => ['webpacker:check_npm'])
-Rake::Task.define_task('webpacker:compile' => ['webpacker:npm_install'])

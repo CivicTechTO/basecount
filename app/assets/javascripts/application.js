@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require_tree .
 
-console.log('wat');
+console.log('Javascript is loading.');
