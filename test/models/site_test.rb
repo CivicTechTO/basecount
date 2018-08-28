@@ -26,6 +26,7 @@ class SiteTest < ActiveSupport::TestCase
         address: "1234 fake street",
         postal_code: "X0X0X0",
         phone: "4161234567",
+        default_capacity: 100,
       },
       services: {
         services: "Some Services",

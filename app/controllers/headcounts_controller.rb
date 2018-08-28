@@ -14,17 +14,16 @@ class HeadcountsController < ApplicationController
   # POST /headcounts
   # POST /headcounts.json
   def create
-    #TODO: should I expose room right now?
-    room = Room.find_by_id(headcount_params[:room_id])
-    return self.bad_request_json "Invalid room" if room.nil?
+    site = Site.find_by_id(headcount_params[:site_id])
+    return self.bad_request_json "Invalid site" if site.nil?
     
-    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? room.site
+    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? site
 
     # augment the parameters with expected values
     default_params = {
       recorded_at: Time.now,
       recorded_by: current_user,
-      capacity: room.capacity,
+      capacity: site.default_capacity,
     }
     
     @headcount = Headcount.new(headcount_params.merge default_params)
@@ -41,7 +40,7 @@ class HeadcountsController < ApplicationController
   def update
     edit_window = Rails.application.config.headcount_edit_window_minutes
 
-    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? headcount.room.site
+    return self.unauthorized_json unless user_signed_in? and current_user.can_add_site_counts? @headcount.site
 
     # ensure headcount isn't too old
     if @headcount.recorded_at < Time.now - edit_window.minutes
@@ -64,7 +63,7 @@ class HeadcountsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def headcount_params
       params.require(:headcount).permit(
-        :room_id,
+        :site_id,
         :occupancy
       )
     end

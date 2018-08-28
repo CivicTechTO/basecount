@@ -1,6 +1,6 @@
 json.extract! headcount,
   :id,
-  :room_id,
+  :site_id,
   :recorded_by_id,
   :recorded_at,
   :capacity,

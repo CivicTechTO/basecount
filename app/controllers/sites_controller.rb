@@ -87,7 +87,8 @@ class SitesController < ApplicationController
         :address,
         :postal_code,
         :phone,
-        :org_id
+        :org_id,
+        :default_capacity,
       )
 
       services = params.require(:services).permit(

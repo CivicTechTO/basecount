@@ -3,7 +3,6 @@ class Site < ApplicationRecord
   has_and_belongs_to_many :aspects
   has_many :schedules
   has_many :schedule_templates
-  has_many :rooms
   has_many :roles
 
   serialize :populations, Array
@@ -13,6 +12,7 @@ class Site < ApplicationRecord
   :address,
   :postal_code,
   :phone,
+  :default_capacity,
   presence: true
 
   def self.convert_attrs_from_frontend_hash ( frontend_hash )
@@ -68,6 +68,7 @@ class Site < ApplicationRecord
         address: self.address,
         postal_code: self.postal_code,
         phone: self.phone,
+        default_capacity: self.default_capacity,
       },
       services: {
         services: self.services,
