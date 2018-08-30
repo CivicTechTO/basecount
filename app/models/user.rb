@@ -20,6 +20,8 @@ class User < ApplicationRecord
       "id"
     ]
 
+    # TODO: need to add permissions
+
     frontend_value = {}
     self_json = self.as_json
     acceptable_frontend_keys.each do |k|

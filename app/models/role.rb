@@ -100,4 +100,33 @@ class Role < ApplicationRecord
     raise GlobalErr::ERRORS[:must_be_org] if ORG_ROLES.include? role and site_or_org.class != Org
     raise GlobalErr::ERRORS[:must_be_site] if SITE_ROLES.include? role and site_or_org.class != Site
   end
+
+  def self.render_roles_for_frontend
+    {
+      site_employee: {
+        pretty_name: "site_employee",
+        code: "site_employee"
+      },
+      site_manager: {
+        pretty_name: "site_manager",
+        code: "site_manager"
+      },
+      org_employee: {
+        pretty_name: "org_employee",
+        code: "org_employee"
+      },
+      org_manager: {
+        pretty_name: "org_manager",
+        code: "org_manager"
+      },
+      global_admin: {
+        pretty_name: "global_admin",
+        code: "global_admin"
+      },
+      global_dataviewer: {
+        pretty_name: "global_dataviewer",
+        code: "global_dataviewer"
+      },
+    }
+  end
 end

@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
     
     render json: json_to_return, status: code
   end
+
+  def current_org
+    Org.find(1)
+  end
 end

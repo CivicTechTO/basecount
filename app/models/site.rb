@@ -80,6 +80,10 @@ class Site < ApplicationRecord
     }
   end
 
+  def self.population_codes_for_frontend
+    @@population_codes
+  end
+
   # Not yet in use
   # def save_aspects! aspects_array
   #   aspects_array.each do |aspect|
