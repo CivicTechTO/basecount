@@ -45,7 +45,7 @@ jobs:
           command: cd client && npm install
       - run: 
           name: Build production files
-          command: cd client && npm run build
+          command: cd client && npm run build-prod
       - save_cache:
           key: npm-cache-v1-{{ checksum "client/package-lock.json" }}
           paths:

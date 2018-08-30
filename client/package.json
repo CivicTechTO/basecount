@@ -15,6 +15,7 @@
   "scripts": {
     "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build && rm -rf ../public/app && mv build ../public/app && cp ../public/app/index.html ../app/views/home/app.html.erb",
+    "build-prod": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

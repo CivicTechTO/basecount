@@ -1,8 +1,8 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  
+  # TODO: need to figure out how were going to wire up login
   devise_for :users
-  
+
   scope :api do
 
     put     '/users/:id', to: 'users#edit'
