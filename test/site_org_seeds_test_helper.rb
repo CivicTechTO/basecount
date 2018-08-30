@@ -40,7 +40,8 @@ class SiteOrgSeedsTestHelper
       address: Faker::Address.street_address,
       postal_code: 'M4C 1L7',
       services: '',
-      phone: '4165271111'
+      phone: '4165271111',
+      default_capacity: rand(200)
     }
   end
 

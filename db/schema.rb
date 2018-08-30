@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_001604) do
+ActiveRecord::Schema.define(version: 2018_08_27_125526) do
 
   create_table "aspects", force: :cascade do |t|
     t.string "name"
@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(version: 2018_08_13_001604) do
   end
 
   create_table "headcounts", force: :cascade do |t|
-    t.integer "room_id"
     t.integer "recorded_by_id"
     t.datetime "recorded_at"
     t.integer "capacity"
     t.integer "occupancy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "site_id"
     t.index ["recorded_by_id"], name: "index_headcounts_on_recorded_by_id"
-    t.index ["room_id"], name: "index_headcounts_on_room_id"
+    t.index ["site_id"], name: "index_headcounts_on_site_id"
   end
 
   create_table "orgs", force: :cascade do |t|
@@ -55,14 +55,6 @@ ActiveRecord::Schema.define(version: 2018_08_13_001604) do
     t.index ["org_id"], name: "index_roles_on_org_id"
     t.index ["site_id"], name: "index_roles_on_site_id"
     t.index ["user_id"], name: "index_roles_on_user_id"
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.integer "site_id"
-    t.integer "capacity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_rooms_on_site_id"
   end
 
   create_table "schedule_templates", force: :cascade do |t|
@@ -95,6 +87,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_001604) do
     t.boolean "active", default: true
     t.string "populations"
     t.string "phone"
+    t.integer "default_capacity"
     t.index ["org_id"], name: "index_sites_on_org_id"
   end
 
