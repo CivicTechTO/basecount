@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 // import { orange } from "../utilities/colors";
-import { Section, ButtonPrimary, ButtonSecondary } from "../utilities";
+import { Section, ButtonPrimary } from "../utilities";
 import HeadcountHistoryRecord from "./HeadcountHistoryRecord";
 import {
   background,
   blue,
-  blueDark,
   red,
   blueLight,
   orange,
@@ -25,7 +24,7 @@ export default class Headcount extends Component {
   }
 
   render() {
-    const sites = Object.values(this.props.sites);
+    // const sites = Object.values(this.props.sites);
     const percentOccupied =
       (this.state.currentHeadcount / this.state.totalHeadcount) * 100;
 

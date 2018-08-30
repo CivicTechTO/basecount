@@ -58,7 +58,7 @@ const CloseBtn = styled.button`
   cursor: pointer;
 `;
 
-const Background = styled.div`
-  position: absolute;
-  width: 100;
-`;
+// const Background = styled.div`
+//   position: absolute;
+//   width: 100;
+// `;

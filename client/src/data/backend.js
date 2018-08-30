@@ -2,7 +2,7 @@
 const backendRequest = ( url, verb, dataToSend = null ) => {
   const accepted_verbs = ['get', 'post', 'delete', 'put'];
   if( ! accepted_verbs.includes(verb.toLowerCase()) ){
-    throw `${verb} is an invalid HTTP verb.`;
+    throw new Error(`${verb} is an invalid HTTP verb.`);
   }
 
   const fetchParams = {

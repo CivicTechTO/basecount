@@ -23,9 +23,9 @@ export default class Menu extends Component {
             <Link to="/app/account">Your settings</Link>
           </li>
           <li>
-            <a href="#" onClick={this.logoutClick}>
+            <button className="unstyled" onClick={this.logoutClick}>
               Logout
-            </a>
+            </button>
           </li>
         </ul>
       </MenuDrop>
@@ -43,5 +43,13 @@ const MenuDrop = styled.div`
         text-transform: uppercase;
       }
     }
+  }
+  .unstyled{
+    background:none!important;
+    color:inherit;
+    border:none; 
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
   }
 `;

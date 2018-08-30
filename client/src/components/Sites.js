@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Section, ButtonPrimary, ButtonSecondary } from "../utilities";
+import { Section } from "../utilities";
 
 export default class Sites extends Component {
   render() {

@@ -20,7 +20,7 @@ const Label = styled.label`
 
 export default class UserSettings extends React.Component {
   render() {
-    const userId = parseInt(this.props.match.params.id);
+    const userId = parseInt(this.props.match.params.id, 10);
     const user = this.props.users.find(user => user.id === userId);
     console.log("UserSettings", userId);
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Section, ButtonPrimary, ButtonSecondary, Icon } from "../utilities";
+import { Section, ButtonPrimary, Icon } from "../utilities";
 
 export default class Login extends Component {
   render() {
