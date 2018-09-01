@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+
+/* globals */
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+body {
+  background-color: black;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.frame {
+  height: 100vh;
+}
+.btn {
+  padding: 0.5rem 2rem;
+  border: 4px #ffecca solid;
+  display: inline-block;
+  margin-top: 4vh;
+  border-radius: 50px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #ffd27e;
+  color: rgb(0, 0, 0);
+  transition: background 500ms ease;
+  box-shadow: 30px 0px 40px rgba(0, 0, 0, 0.3),
+    -30px 0px 40px rgba(0, 0, 0, 0.3);
+}
+.btn:hover {
+  background: #f8bf54;
+}
+#sign-up {
+  color: #333;
+  margin-top: 1.5vh;
+  background-color: white;
+  border: 4px #dddddd solid;
+  text-align: center;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+#sign-up:hover {
+  border: 4px solid #f8bf54;
+}
+/* landing */
+#landing {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://i.imgur.com/TEEFRKk.gif");
+  background-position: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+#logo {
+  padding-top: 5vh;
+  padding-bottom: 0;
+  width: 26vh;
+  height: 26vh;
+}
+
+#landing-text {
+  position: relative;
+  background: white;
+  background-image: url("./../images/basecount-logo.png");
+  background-position: center center;
+  background-size: 65% 65%, cover;
+  background-repeat: no-repeat;
+  width: 80vw;
+  max-width: 340px;
+  height: 80vw;
+  max-height: 340px;
+  border-radius: 50%;
+  box-shadow: 30px 0px 40px rgba(0, 0, 0, 0.3),
+    -30px 0px 40px rgba(0, 0, 0, 0.3);
+}
+#landing-text-inner {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  overflow: wrap;
+}
+#landing-text h2 {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 104%;
+  color: grey;
+}
+#landing-text-inner span {
+  padding-top: 0;
+  font-size: 0.95rem;
+}
+/* landing end */
+
+/* description */
+#description {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  background: red;
+}
+#description h2 {
+  margin: 3vh;
+  text-align: left;
+  color: white;
+}
+#diagram {
+  display: flex;
+  padding-top: 3vh;
+  width: 100vw;
+  /* background: #333; */
+  flex-direction: column;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+.diagram-block {
+  width: 80vw;
+  height: 16vh;
+  margin-bottom: 0vh;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.diagram-sub-block {
+  width: 16vh;
+  height: 16vh;
+  border: 4px #ffecca solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: wrap;
+}
+.diagram-sub-block p {
+  font-weight: 800;
+  text-align: center;
+  padding: 1vw;
+  color: white;
+}
+.diagram-sub-block-2 {
+  width: 10vh;
+  height: 10vh;
+  border: 4px #ffecca solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: wrap;
+}
+.diagram-sub-block-2 p {
+  font-size: 2vh;
+  font-weight: 800;
+  text-align: center;
+  padding: 1vw;
+  color: white;
+}
+#diagram-logo {
+  width: 17vh;
+  height: 17vh;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+#diagram-logo img {
+  width: auto;
+  height: 11.8vh;
+}
+#arrow {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#arrow img {
+  transform: translateY(-3vh);
+  height: 13vh;
+}
+/* description-end */
+/* sign-up */
+#sign-up-frame {
+  background: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#sign-up-frame h2 {
+  margin: 3vh;
+  text-align: left;
+  color: white;
+}
+
+@media only screen and (min-width: 500px) {
+  #landing-text h2{
+    font-size: 1.1rem;
+  }
+  #description h2 {
+    margin: 10vh 5vw 5vw 5vw;
+    font-size: 2.5rem;
+  }
+  #diagram {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80vw;
+    height: 80vh;
+    margin: auto;
+  }
+  .diagram-block {
+    width: 15vw;
+    height: 30vh;
+    flex-direction: column;
+  }
+  .diagram-sub-block {
+    border-radius: 20px;
+    margin-bottom: 3vh;
+    width: 14vw;
+  }
+  .diagram-sub-block-2 {
+    border-radius: 20px;
+    margin-bottom: 3vh;
+    width: 14vw;
+  }
+  .diagram-sub-block-2 p {
+    font-size: 1rem;
+  }
+  #diagram-logo {
+    width: 17vw;
+    height: 17vw;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+  }
+  #diagram-logo img {
+    width: 10vw;
+    height: auto;
+  }
+  #arrow {
+    transform: translateX(-3vw);
+  }
+  #arrow img {
+    width: 20vw;
+    height: 40vh;
+    transform: rotate(270deg);
+  }
+}
