@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import axios from "axios";
 import Login from "./components/Login";
+import Home from "./components/Home";
 import Header from "./components/Header";
 import Subheader from "./components/Subheader";
 import Headcount from "./components/Headcount";
@@ -11,6 +12,8 @@ import Account from "./components/Account";
 import "./App.css";
 import data from "./data/front-end";
 import * as Backend from "./data/backend";
+import { getAppOrg } from "./data/state-tools";
+import PrivateRoute from "./utilities/PrivateRoute";
 
 class App extends Component {
   state = {
@@ -26,7 +29,6 @@ class App extends Component {
   };
 
   componentWillMount() {
-    console.log(data);
     const {
       appOrg,
       appUser,
@@ -47,22 +49,36 @@ class App extends Component {
       permission_levels
     });
     Backend.getState().then( data => {
-      console.log('😎 I *could* be setting state with this:');
-      console.log(data);
+      this.setState(data);
     });
   }
 
   render() {
     const { appOrg, appUser } = this.state;
+    const headerContent = appUser ? (
+      <div>
+        <Header />
+        <Subheader {...getAppOrg(this.state)} />
+      </div>
+    ) : null;
+
     return (
       <div className="App">
         <BrowserRouter>
           <Fragment>
-            <Header />
-            <Subheader orgName={this.state.orgs[appOrg].name} />
+            { headerContent }
             <Switch>
-              <Route exact path="/app/" render={() => <Login />} />
+              <Route exact path="/" render={() => <Home />} />
               <Route
+                exact
+                path="/login"
+                render={() => 
+                  <Login
+                    userId={this.state.appUser}
+                  />
+                } 
+              />
+              <PrivateRoute
                 exact
                 path="/app/headcount"
                 render={() => (
@@ -73,7 +89,7 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <PrivateRoute
                 exact
                 path="/app/admin/sites"
                 render={() => (
@@ -85,7 +101,7 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <PrivateRoute
                 path="/app/admin/users"
                 render={props => (
                   <Users
@@ -97,7 +113,7 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              <PrivateRoute
                 exact
                 path="/app/account"
                 render={() => <Account user={this.state.users[appUser]} />}

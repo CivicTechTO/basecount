@@ -25,6 +25,9 @@ Helping respite centres communicate their population counts. This is a **citizen
 
 `foreman` will start the back end, as well as the front end with hot reloading. The site will be served on port 3000, with the rails server at 3001 being proxied into 3000.
 
+During development, you may need to 
+ todo: env.development
+
 ### Testing
 ```
   rails test;

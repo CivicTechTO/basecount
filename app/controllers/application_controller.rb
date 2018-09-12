@@ -1,4 +1,8 @@
-class ApplicationController < ActionController::Base  
+class ApplicationController < ActionController::API
+  include ActionController::MimeResponds
+  
+  respond_to :json
+
   # TODO: probbaly need to make this better.
   def unauthorized_json msg = nil
     self.generic_request_error(403, msg)
@@ -28,6 +32,15 @@ class ApplicationController < ActionController::Base
   end
 
   def current_org
-    Org.find(1)
+
+    # remove anything that isn't the subdomain
+    subdomain = request.host.gsub(".#{Rails.application.config.domain}",'')
+
+    Org.find_by(subdomain: subdomain)
   end
+
+  def is_localhost?
+    Rails.env.development? && request.host == 'localhost'
+  end
+
 end

@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components"; // remove this, when OrgLogo moved to utilities
 
-const Subheader = props => {
-  return <OrgLogo>{props.orgName}</OrgLogo>;
+// org is org or null
+const Subheader = org => {
+  return org ? (
+    <OrgLogo>{org.name}</OrgLogo>
+  ) : null
 };
 
 // TODO: Move this to utilities

@@ -1,7 +1,9 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   # TODO: need to figure out how were going to wire up login
-  devise_for :users
+  devise_for :users,
+    defaults: { format: :json }
+    # controllers: { sessions: :sessions }
 
   scope :api do
 
@@ -33,16 +35,13 @@ Rails.application.routes.draw do
     end
     
     get     '/base_state', to: 'state#index', as: 'base_state'
+    post '/test', to: 'state#bindex'
     
   end
 
-  root to: 'home#index'
-
-  if Rails.env.production?
-    scope :app do
-      get '/', to: 'home#app'
-      get '*path', to: 'home#app'
-    end
-  end
+  # if Rails.env.production?
+  get '/', to: 'home#app'
+  get '*path', to: 'home#app'
+  # end
 
 end

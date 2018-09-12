@@ -8,12 +8,16 @@ class StateController < ApplicationController
     end
 
     orgs = {}
-    orgs[current_org[:id]] = current_org
+    app_org = nil
+    if current_org
+      orgs[current_org[:id]] = current_org 
+      app_org = current_org[:id]
+    end
     
     state = {
       loggedIn: user_signed_in?,
       appUser: user_signed_in? ? current_user.id : nil,
-      appOrg: current_org[:id],
+      appOrg: app_org,
       permission_levels: Role.render_roles_for_frontend,
       sitePopulations: Site.population_codes_for_frontend,
       dbData: {
